@@ -1,0 +1,950 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clear Sign Redesign � Chris Beard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* ── Pajamas backgrounds ── */
+    --bg: #fbfafd;           /* neutral.10  – page background   */
+    --bg-card: #ffffff;      /* neutral.0   – card / surface    */
+    --bg-warm: #ececef;      /* neutral.50  – subtle section bg */
+    --bg-dark: #18171d;      /* neutral.950 – dark hero / quote */
+
+    /* ── Pajamas text ── */
+    --ink: #3a383f;          /* neutral.800 – default text      */
+    --ink-2: #626168;        /* neutral.600 – subtle text       */
+    --ink-3: #737278;        /* neutral.500 – muted text        */
+    --heading: #18171d;      /* neutral.950 – heading text      */
+
+    /* ── Pajamas accent (blue.500) ── */
+    --accent: #1f75cb;
+    --accent-hover: #2f68b4; /* blue.600 */
+    --accent-light: #cbe2f9; /* blue.100 */
+    --accent-2: #1f75cb;
+    --accent-2-light: #e9f3fc; /* blue.50 */
+
+    /* ── Pajamas borders ── */
+    --border: #dcdcde;       /* neutral.100 */
+    --border-strong: #bfbfc3; /* neutral.200 */
+
+    /* ── Geometry ── */
+    --radius: 4px;
+    --radius-lg: 6px;
+
+    /* ── Pajamas typography ── */
+    --font-display: 'GitLab Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+    --font-body:    'GitLab Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+    --font-mono:    'GitLab Mono', 'JetBrains Mono', 'Menlo', 'DejaVu Sans Mono', 'Liberation Mono', 'Consolas', monospace;
+
+    --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── WCAG 2.0 AA FOCUS & ACCESSIBILITY ── */
+  .skip-nav {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 9999;
+    background: var(--accent);
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: top 0s;
+  }
+  .skip-nav:focus { top: 0.75rem; outline: 3px solid #18171d; outline-offset: 2px; }
+
+  a:focus-visible, button:focus-visible, [role="button"]:focus-visible, [tabindex]:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: var(--radius);
+  }
+  a:focus:not(:focus-visible), button:focus:not(:focus-visible) { outline: none; }
+  .card:focus-visible, .work-row:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .cs-body-text a, .resume-sub a { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-dark);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: var(--font-display); font-size: 1.125rem; font-weight: 600;
+    color: #ffffff; text-decoration: none; letter-spacing: -0.01em; cursor: pointer;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a {
+    font-size: 1rem; font-weight: 400; color: rgba(255,255,255,0.72);
+    text-decoration: none; letter-spacing: 0.01em;
+    transition: color var(--transition); cursor: pointer;
+  }
+  .nav-links a:hover { color: #ffffff; }
+  .nav-cta {
+    background: var(--accent) !important; color: #ffffff !important;
+    padding: 0.45rem 1.1rem !important; border-radius: var(--radius) !important;
+    font-weight: 500 !important; font-size: 1rem !important;
+    letter-spacing: 0.01em !important; transition: background var(--transition) !important;
+  }
+  .nav-cta:hover { background: var(--accent-hover) !important; color: #ffffff !important; }
+
+  /* ── PAGES ── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ── HERO ── */
+  .hero { padding: 5rem 2.5rem 3rem; max-width: 1200px; margin: 0 auto; }
+  .hero-eyebrow {
+    font-family: var(--font-mono); font-size: 0.875rem; letter-spacing: 0.10em;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--accent); }
+  .hero-h1 {
+    font-family: var(--font-display); font-size: clamp(2.6rem, 5vw, 4.2rem);
+    font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+    color: var(--heading); max-width: 820px; margin-bottom: 1.5rem;
+  }
+  .hero-h1 em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-size: 1.0625rem; color: var(--ink-2);
+    line-height: 1.6; margin-bottom: 2.5rem; font-weight: 400;
+  }
+  .hero-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 4rem; }
+  .btn-primary {
+    background: var(--accent); color: #ffffff; padding: 0.75rem 1.75rem;
+    border-radius: var(--radius); font-size: 1rem; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.01em;
+    transition: background var(--transition), transform var(--transition);
+    cursor: pointer; border: none; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+  .btn-ghost {
+    color: var(--ink-2); font-size: 1rem; text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem;
+    transition: color var(--transition), background var(--transition);
+    cursor: pointer; border: 1px solid var(--border); background: transparent;
+    padding: 0.4rem 0.75rem; border-radius: var(--radius);
+  }
+  .btn-ghost:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-2-light); border-radius: var(--radius); }
+  .hero-social-links { display: flex; gap: 1rem; align-items: center; }
+  .social-link {
+    width: 36px; height: 36px; border: 1px solid var(--border-strong);
+    border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
+    color: var(--ink-2); text-decoration: none; font-size: 1rem;
+    font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.02em;
+    transition: all var(--transition); cursor: pointer;
+  }
+  .social-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+  /* ── METRICS STRIP ── */
+  .metrics-strip {
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 2rem 2.5rem; background: var(--bg-warm); overflow-x: auto;
+  }
+  .metrics-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+  }
+  .metric-item { text-align: center; }
+  .metric-num {
+    font-family: var(--font-display); font-size: 2.5rem; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--accent); line-height: 1;
+    display: block; margin-bottom: 0.35rem;
+  }
+  .metric-label { font-size: 0.875rem; color: var(--ink-2); font-family: var(--font-mono); letter-spacing: 0.05em; text-transform: uppercase; line-height: 1.4; }
+  .metric-co { font-size: 0.875rem; color: var(--ink-2); margin-top: 0.2rem; display: block; font-family: var(--font-mono); letter-spacing: 0.04em; }
+
+  /* ── BENTO GRID ── */
+  .bento-section { padding: 4rem 2.5rem; max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-family: var(--font-mono); font-size: 0.875rem; letter-spacing: 0.10em;
+    color: var(--ink-3); text-transform: uppercase; margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 200px; }
+  .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.25rem; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); overflow: hidden; position: relative;
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  }
+  .card:hover { border-color: var(--border-strong); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(5,5,6,0.08); }
+  .case-card { grid-column: span 4; cursor: pointer; }
+  .case-card-large { grid-column: span 8; cursor: pointer; }
+  .case-card-med { grid-column: span 6; cursor: pointer; }
+  .case-card-inner { padding: 1.75rem; height: 100%; display: flex; flex-direction: column; }
+
+  .card-tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .tag {
+    font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 2px; font-weight: 500;
+  }
+  .tag-industry { background: var(--accent-light); color: var(--heading); }
+  .tag-platform { background: var(--accent-2-light); color: var(--heading); }
+  .tag-year { background: var(--bg-warm); color: var(--ink-2); border: 1px solid var(--border); }
+
+  .card-thumb {
+    width: 100%; height: 200px; background: var(--bg-warm); border-radius: var(--radius);
+    margin-bottom: 1.25rem; overflow: hidden; position: relative;
+  }
+  .card-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .card-thesis {
+    font-family: var(--font-display); font-size: 1.25rem; font-weight: 600;
+    line-height: 1.3; letter-spacing: -0.01em; color: var(--heading); margin-bottom: 1rem; flex: 1;
+  }
+  .card-summary { font-size: 0.9375rem; color: var(--ink-2); line-height: 1.6; margin-bottom: 1.25rem; }
+  .card-metric-pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 2rem;
+    padding: 0.3rem 0.8rem; font-family: var(--font-mono); font-size: 0.75rem;
+    font-weight: 500; color: var(--accent); margin-right: 0.4rem; margin-bottom: 0.4rem;
+  }
+  .card-cta {
+    display: flex; align-items: center; gap: 0.4rem; font-size: 0.9375rem; font-weight: 500;
+    color: var(--ink-3); margin-top: auto; padding-top: 1rem;
+    border-top: 1px solid var(--border); transition: color var(--transition);
+    text-decoration: none; cursor: pointer;
+  }
+  .card:hover .card-cta { color: var(--accent); }
+  .card-cta-arrow { transition: transform var(--transition); }
+  .card:hover .card-cta-arrow { transform: translateX(3px); }
+
+  .nda-card {
+    background: var(--bg-warm); border: 1px dashed var(--border-strong);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; padding: 2rem; text-align: center; gap: 0.75rem;
+  }
+  .nda-label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-2); }
+  .nda-title { font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; color: var(--ink-2); line-height: 1.3; }
+  .nda-sub { font-size: 0.9375rem; color: var(--ink-2); }
+
+  /* ── HOW I WORK ── */
+  .how-card { grid-column: span 12; margin: 0 0 4rem;}
+  .how-card:hover { border-color: var(--border); transform: none; box-shadow: none; }
+  .how-card-inner { padding: 2rem 2.5rem; display: grid; grid-template-columns: 200px 1fr; gap: 3rem; align-items: start; }
+  .how-h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; color: var(--heading); }
+  .how-sub { font-size: 0.9375rem; color: var(--ink-3); margin-top: 0.5rem; line-height: 1.5; }
+  .how-pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
+  .pillar-name { font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin-bottom: 0.35rem; }
+  .pillar-desc { font-size: 0.9375rem; color: var(--ink-3); line-height: 1.6; }
+
+  /* ── QUOTE STRIP ── */
+  .quote-strip { background: var(--bg-dark); padding: 3.5rem 2.5rem; text-align: center; }
+  .quote-text {
+    font-family: var(--font-display); font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 400; font-style: italic; color: rgba(255,255,255,0.9);
+    max-width: 700px; margin: 0 auto 1rem; line-height: 1.6; opacity: 0.9;
+  }
+  .quote-attr { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+
+  /* ── FOOTER ── */
+  footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  .footer-copy { font-size: 0.875rem; color: var(--ink-3); font-family: var(--font-mono); }
+  .footer-link { font-size: 0.875rem; color: var(--ink-3); text-decoration: none; transition: color var(--transition); }
+  .footer-link:hover { color: var(--accent); }
+
+  /* ── WORK INDEX PAGE ── */
+  .work-header { padding: 4rem 2.5rem 2rem; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+  .work-h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1rem; max-width: 600px; color: var(--heading); }
+  .work-sub { color: var(--ink-2); font-size: 1rem; max-width: 520px; font-weight: 400; }
+  .work-list { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem 4rem; display: flex; flex-direction: column; gap: 1rem; }
+  .work-row {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 1.5rem 2rem; display: grid; grid-template-columns: 1fr auto;
+    align-items: center; gap: 2rem; cursor: pointer;
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    text-decoration: none; color: inherit;
+  }
+  .work-row:hover { border-color: var(--border-strong); transform: translateX(4px); box-shadow: 0 4px 16px rgba(5,5,6,0.06); }
+  .work-row-nda { background: var(--bg-warm); border: 1px dashed var(--border-strong); cursor: default; }
+  .work-row-nda:hover { transform: none; box-shadow: none; }
+  .work-row-co { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.35rem; }
+  .work-row-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; color: var(--heading); margin-bottom: 0.5rem; }
+  .work-row-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .work-row-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; flex-shrink: 0; }
+  .work-row-metric { font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; color: var(--accent); white-space: nowrap; }
+  .work-row-arrow { font-size: 1rem; color: var(--ink-3); transition: transform var(--transition), color var(--transition); }
+  .work-row:hover .work-row-arrow { transform: translateX(4px); color: var(--accent); }
+
+  /* ── CASE STUDY PAGES ── */
+  .cs-hero { background: var(--bg-dark); padding: 4rem 2.5rem; position: relative; overflow: hidden; }
+  .cs-hero::after { content: ''; position: absolute; bottom: 0; right: 0; width: 400px; height: 400px; background: radial-gradient(circle at center, rgba(31,117,203,0.12) 0%, transparent 70%); pointer-events: none; }
+  .cs-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+  .cs-back { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9375rem; color: rgba(255,255,255,0.55); text-decoration: none; margin-bottom: 2rem; cursor: pointer; transition: color var(--transition), background var(--transition); border: none; background: transparent; font-family: var(--font-body); padding: 0.35rem 0.65rem; border-radius: var(--radius); margin-left: -0.65rem; }
+  .cs-back:hover { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.08); }
+  .cs-co-label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.09em; text-transform: uppercase; color: #63a6e9; margin-bottom: 1rem; }
+  .cs-h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.75rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: #ffffff; max-width: 780px; margin-bottom: 2rem; }
+  .cs-metrics-row { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
+  .cs-metric-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 1rem 1.5rem; min-width: 140px; }
+  .cs-metric-num { font-family: var(--font-display); font-size: 2.25rem; font-weight: 700; color: #63a6e9; letter-spacing: -0.02em; line-height: 1; display: block; margin-bottom: 0.3rem; }
+  .cs-metric-label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.55); line-height: 1.4; }
+
+  .cs-body { max-width: 1200px; margin: 0 auto; padding: 3rem 2.5rem; }
+  .cs-section { margin-bottom: 3.5rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--border); }
+  .cs-section:last-child { border-bottom: none; margin-bottom: 0; }
+  .cs-section-num { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .cs-section-title { font-family: var(--font-display); font-size: 1.625rem; font-weight: 600; letter-spacing: -0.01em; color: var(--heading); margin-bottom: 1.25rem; }
+  .cs-body-text { font-size: 1rem; color: var(--ink-2); line-height: 1.7; font-weight: 400; }
+  .cs-body-text strong { font-weight: 600; color: var(--ink); }
+  .cs-body-text + .cs-body-text { margin-top: 1rem; }
+
+  .cs-constraints-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .cs-constraint-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+  .cs-constraint-label { font-size: 0.9375rem; font-weight: 600; color: var(--heading); margin-bottom: 0.35rem; letter-spacing: 0; }
+  .cs-constraint-desc { font-size: 0.9375rem; color: var(--ink-2); line-height: 1.6; }
+
+  .method-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.25rem 0; }
+  .method-pill { background: var(--bg-card); border: 1px solid var(--border-strong); border-radius: 2rem; padding: 0.4rem 0.9rem; font-size: 0.875rem; font-weight: 400; color: var(--ink-2); font-family: var(--font-mono); letter-spacing: 0.02em; }
+
+  /* ── IMAGE GALLERY ── */
+  .cs-image-gallery { margin-top: 1.5rem; }
+  .cs-image-hero { width: 100%; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 1rem; border: 1px solid var(--border); }
+  .cs-image-hero img { width: 100%; display: block; }
+  .cs-image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+  .cs-image-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .cs-img-card { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--bg-warm); cursor: zoom-in; }
+  .cs-img-card img { width: 100%; display: block; }
+  .cs-image-gallery--compact .cs-image-grid { grid-template-columns: repeat(4, 1fr); }
+  .cs-image-gallery--compact .cs-img-card { aspect-ratio: 9 / 16; }
+  .cs-image-gallery--compact .cs-img-card img { width: 100%; height: 100%; object-fit: cover; }
+  .cs-img-label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); padding: 0.6rem 0.75rem; background: var(--bg-warm); border-top: 1px solid var(--border); }
+
+  /* ── SEVERITY MATRIX ── */
+  .severity-matrix { margin-top: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .matrix-header { background: var(--bg-warm); padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); }
+  .matrix-header-title { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-2); }
+  .matrix-cell { padding: 0.75rem 1rem; font-size: 0.9375rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .matrix-cell-head { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); background: var(--bg-warm); }
+  .cell-high { background: #fcf1ef; color: #c02f12; font-weight: 500; }
+  .cell-med  { background: #fdf1dd; color: #995715; }
+  .cell-low  { background: #ecf4ee; color: #2f7549; }
+
+  .cs-handoff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.25rem; }
+  .handoff-item { padding: 1.25rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); }
+  .handoff-label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.5rem; }
+  .handoff-val { font-size: 0.9375rem; color: var(--ink-2); line-height: 1.6; }
+  .handoff-val strong { color: var(--ink); font-weight: 600; }
+
+  /* ── OUTCOME BOX ── */
+  .cs-outcome-box { background: var(--accent-light); border: 1px solid rgba(31,117,203,0.25); border-radius: var(--radius-lg); padding: 1.75rem 2rem; margin-top: 1.5rem; }
+  .cs-outcome-title { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink); margin-bottom: 1rem; }
+  .cs-outcome-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .cs-outcome-list li { font-size: 1rem; color: var(--ink-2); line-height: 1.7; padding-left: 1.25rem; position: relative; font-weight: 400; }
+  .cs-outcome-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 1rem; }
+  .cs-outcome-list li strong { font-weight: 600; color: var(--ink); }
+
+  /* ── COMPETITIVE TABLE ── */
+  .comp-table-wrap { overflow-x: auto; margin-top: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border); }
+  .comp-table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+  .comp-table th { background: var(--bg-warm); padding: 0.75rem 1rem; text-align: left; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); font-weight: 500; }
+  .comp-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); color: var(--ink-2); line-height: 1.5; vertical-align: top; }
+  .comp-table tr:last-child td { border-bottom: none; }
+  .comp-table td:last-child, .comp-table th:last-child { border-right: none; }
+  .comp-table td:first-child { font-weight: 600; color: var(--ink); }
+
+  /* ── RESUME PAGE ── */
+  .resume-header { padding: 4rem 2.5rem 2rem; max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+  .resume-h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.5rem; color: var(--heading); }
+  .resume-sub { font-size: 0.9375rem; color: var(--ink-3); font-weight: 400; }
+  .resume-body { max-width: 900px; margin: 0 auto; padding: 0 2.5rem 4rem; }
+  .resume-section { margin-bottom: 2.5rem; }
+  .resume-section-title { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+  .resume-entry { padding: 1.25rem 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 180px 1fr; gap: 2rem; }
+  .resume-entry:last-child { border-bottom: none; }
+  .resume-date { font-family: var(--font-mono); font-size: 0.875rem; color: var(--ink-3); padding-top: 0.2rem; line-height: 1.5; }
+  .resume-role { font-size: 1rem; font-weight: 600; color: var(--heading); margin-bottom: 0.2rem; }
+  .resume-co { font-size: 0.875rem; color: var(--accent); font-family: var(--font-mono); letter-spacing: 0.04em; margin-bottom: 0.75rem; }
+  .resume-co-desc { font-size: 0.9375rem; color: var(--ink-3); font-weight: 400; margin-bottom: 0.75rem; line-height: 1.6; font-style: italic; }
+  .resume-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .resume-bullets li { font-size: 0.9375rem; color: var(--ink-2); line-height: 1.7; padding-left: 1.25rem; position: relative; font-weight: 400; }
+  .resume-bullets li::before { content: '•'; position: absolute; left: 0; color: var(--ink-3); font-size: 1rem; }
+  .resume-bullets li strong { font-weight: 600; color: var(--ink); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .skills-col-title { font-size: 0.9375rem; font-weight: 600; color: var(--heading); margin-bottom: 0.75rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-tag { font-size: 0.875rem; padding: 0.3rem 0.75rem; background: var(--bg-warm); border: 1px solid var(--border); border-radius: 2px; color: var(--ink-2); font-family: var(--font-mono); letter-spacing: 0.03em; }
+
+  /* ── PULL QUOTE ── */
+  .cs-pullquote {
+    margin: 1.75rem 0 0;
+    padding: 1.5rem 1.75rem;
+    background: var(--accent-2-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  }
+  .cs-pullquote-text {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink-2);
+    line-height: 1.75;
+    margin: 0 0 1rem;
+  }
+  .cs-pullquote-attr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .cs-pullquote-source {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .cs-pullquote-link {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    color: var(--accent-hover);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition);
+  }
+  .cs-pullquote-link:hover { color: var(--heading); }
+
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-in { animation: fadeUp 0.5s ease both; }
+  .delay-1 { animation-delay: 0.08s; }
+  .delay-2 { animation-delay: 0.16s; }
+  .delay-3 { animation-delay: 0.24s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1.25rem; }
+    .hero { padding: 3rem 1.25rem 2rem; }
+    .metrics-strip { padding: 1.5rem 1.25rem; }
+    .metrics-inner { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .bento-section { padding: 2.5rem 1.25rem; }
+    .case-card, .case-card-large, .case-card-med { grid-column: span 12; }
+    .how-card { grid-column: span 12; }
+    .how-card-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .work-header { padding: 2.5rem 1.25rem 1.5rem; }
+    .work-list { padding: 0 1.25rem 3rem; }
+    .work-row { grid-template-columns: 1fr; }
+    .work-row-right { flex-direction: row; align-items: center; justify-content: space-between; }
+    .cs-hero { padding: 2.5rem 1.25rem; }
+    .cs-body { padding: 2rem 1.25rem; }
+    .cs-metrics-row { gap: 0.75rem; }
+    .resume-header { padding: 2.5rem 1.25rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .resume-body { padding: 0 1.25rem 3rem; }
+    .resume-entry { grid-template-columns: 1fr; gap: 0.25rem; }
+    .skills-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .cs-image-grid-2 { grid-template-columns: 1fr; }
+    footer { padding: 1.5rem 1.25rem; }
+    .footer-inner { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+  }
+  @media (max-width: 640px) {
+    .hero-h1 { font-size: 2.25rem; }
+    .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+    .bento-grid { grid-template-columns: 1fr; }
+    .nav-links li:not(:last-child) { display: none; }
+    .cs-image-grid { grid-template-columns: 1fr; }
+    .cs-image-gallery--compact .cs-image-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ── LIGHTBOX ── */
+  .lb-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    background: rgba(5,5,6,0.92);
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    cursor: zoom-out;
+  }
+  .lb-overlay.open {
+    display: flex;
+    animation: lbFadeIn 0.22s ease both;
+  }
+  @keyframes lbFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  .lb-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 92vw;
+    max-height: 92vh;
+    cursor: default;
+  }
+  .lb-img {
+    max-width: 100%;
+    max-height: 88vh;
+    border-radius: var(--radius);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+    display: block;
+    animation: lbImgIn 0.2s ease both;
+    user-select: none;
+  }
+  @keyframes lbImgIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .lb-close {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.16);
+    color: #ffffff;
+    font-size: 1.25rem;
+    line-height: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.18s ease;
+    z-index: 9010;
+  }
+  .lb-overlay.open ~ .lb-close { display: flex; }
+  .lb-close:hover { background: rgba(255,255,255,0.20); }
+  .lb-close:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .lb-prev,
+  .lb-next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.16);
+    color: #ffffff;
+    font-size: 1.25rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.18s ease, opacity 0.18s ease;
+    z-index: 9010;
+    user-select: none;
+  }
+  .lb-overlay.open ~ .lb-prev,
+  .lb-overlay.open ~ .lb-next { display: flex; }
+  .lb-prev { left: 1.25rem; }
+  .lb-next { right: 1.25rem; }
+  .lb-prev:hover,
+  .lb-next:hover { background: rgba(255,255,255,0.22); }
+  .lb-prev:focus-visible,
+  .lb-next:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .lb-prev.hidden,
+  .lb-next.hidden { opacity: 0; pointer-events: none; }
+  .lb-caption {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 9010;
+    pointer-events: none;
+    display: none;
+  }
+  .lb-overlay.open ~ .lb-caption { display: block; }
+  .lb-counter {
+    position: fixed;
+    top: 1.375rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em;
+    z-index: 9010;
+    pointer-events: none;
+    display: none;
+  }
+  .lb-overlay.open ~ .lb-counter { display: block; }
+  /* Clickable image cursor & hover hint */
+  .cs-lightbox-img {
+    cursor: zoom-in;
+    transition: opacity 0.18s ease;
+  }
+  .cs-lightbox-img:hover { opacity: 0.88; }
+  .cs-img-card {
+    position: relative;
+  }
+  .cs-img-card::after {
+    content: '⤢';
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    background: rgba(5,5,6,0.55);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.18s ease;
+    pointer-events: none;
+    line-height: 28px;
+    text-align: center;
+  }
+  .cs-img-card:hover::after { opacity: 1; }
+  .cs-img-card:hover img { opacity: 0.88; transition: opacity 0.18s ease; }
+  .cs-image-hero {
+    position: relative;
+  }
+  .cs-image-hero::after {
+    content: '⤢';
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    background: rgba(5,5,6,0.55);
+    color: rgba(255,255,255,0.85);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.18s ease;
+    pointer-events: none;
+    line-height: 32px;
+    text-align: center;
+  }
+  .cs-image-hero:hover::after { opacity: 1; }
+
+  /* Active nav state */
+  .nav-active { color: #ffffff !important; font-weight: 500; }
+  /* Remove page/SPA display toggling — every file is its own page */
+  .page { display: block !important; }
+</style>
+</head>
+<body class=cs-page-body>
+
+<a class="skip-nav" href="#main-content">Skip to main content</a>
+
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="index.html">Chris Beard</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="work.html" aria-current="page" class="nav-active">Work</a></li>
+    <li><a href="resume.html">R�sum�</a></li>
+    <li><a href="https://www.linkedin.com/in/beard02/" target="_blank" rel="noopener">LinkedIn</a></li>
+    <li><a class="nav-cta" href="work.html">View My Work ?</a></li>
+  </ul>
+</nav>
+
+<main id="main-content">
+<div class="cs-hero">
+    <div class="cs-hero-inner">
+      <a class="cs-back" href="work.html">? Back to Work</a>
+      <p class="cs-co-label">Amrock, LLC � UX Designer � Jan 2022 � Dec 2022</p>
+      <h1 class="cs-h1">Clear Sign Redesign: Reimagining a Mortgage Closing Platform from a Mobile-First Perspective</h1>
+      <div class="cs-metrics-row">
+        <div class="cs-metric-box"><span class="cs-metric-num">Mobile</span><span class="cs-metric-label">First approach</span></div>
+        <div class="cs-metric-box"><span class="cs-metric-num">Parallel</span><span class="cs-metric-label">Design exploration</span></div>
+        <div class="cs-metric-box"><span class="cs-metric-num">7</span><span class="cs-metric-label">Usability test participants</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cs-body">
+
+    <div class="cs-section">
+      <p class="cs-section-num">01 � Overview</p>
+      <h2 class="cs-section-title">About Clear Sign</h2>
+      <p class="cs-body-text">Clear Sign is a digital mortgage closing platform used by Rocket Mortgage, built specifically for the closing experience with both in-person and remote closing options. The goal of this project was to re-imagine what Clear Sign could become from a mobile-first approach, specifically to improve the remote closing experience. I worked with another designer in parallel to maximize the range of possible solutions explored.</p>
+      <p class="cs-body-text" style="margin-top:1rem;">My contributions focused on a parallel design option covering new ideas for the <strong>Signer and Notary paths</strong> within the product, starting from NPS survey feedback, Google Analytics session data, a thorough competitive analysis, and a usability baseline established through live usability studies.</p>
+    </div>
+
+    <div class="cs-section">
+      <p class="cs-section-num">02 � Determining the Problem</p>
+      <h2 class="cs-section-title">Usability Study & Data Analysis</h2>
+      <p class="cs-body-text">Before designing anything, I established a clear baseline of where the current product was failing. I defined research goals, noted assumptions about the experience, and ran an unmoderated test via Usertesting.com with <strong>7 participants</strong> matching our expected user criteria.</p>
+      <p class="cs-body-text" style="margin-top:1rem;">Results showed testers rated the check-in process as easy, yet felt uncertain about what to do once they completed it. Key recommendations surfaced:</p>
+      <div class="cs-constraints-grid" style="margin-top:1rem;">
+        <div class="cs-constraint-card"><p class="cs-constraint-label">Audio/Video expectations</p><p class="cs-constraint-desc">Explore updating and clarifying expectations on the Audio/Video setup page. Users were unsure if they'd completed it correctly.</p></div>
+        <div class="cs-constraint-card"><p class="cs-constraint-label">Redundant steps</p><p class="cs-constraint-desc">Reduce redundant pages and information that don't help the process and made the experience feel longer than necessary.</p></div>
+        <div class="cs-constraint-card"><p class="cs-constraint-label">Lobby page clarity</p><p class="cs-constraint-desc">Create better expectations when returning to the lobby page. Next steps should be clear, and check-in completion should be confirmed.</p></div>
+      </div>
+      <div class="cs-image-gallery" style="margin-top:1.5rem;">
+        <div class="cs-image-grid">
+          <div class="cs-img-card"><img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f3829d58f505a6f7cb6381_researchplan.PNG" alt="Research plan slide showing study details" loading="lazy"><p class="cs-img-label">Research Plan</p></div>
+          <div class="cs-img-card"><img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f3829d05dd39bee1870563_researchplan2.PNG" alt="Research plan slide showing designer assumptions about the product before testing" loading="lazy"><p class="cs-img-label">Assumptions</p></div>
+          <div class="cs-img-card"><img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f3829ca723298ff356520a_researchplan3.PNG" alt="Insights for the lobby page" loading="lazy"><p class="cs-img-label">Lobby Insights</p></div>
+          <div class="cs-img-card"><img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f3829db05b872ac083ed87_researchplan4.PNG" alt="Recommendations for potential changes" loading="lazy"><p class="cs-img-label">Recommendations</p></div>
+        </div>
+      </div>
+      <p class="cs-body-text" style="margin-top:1.5rem;">Beyond the usability study, I sifted through NPS surveys, support tickets, and Google Analytics, tracking clicks, time on page, drop-off points, and downloads. Patterns that emerged included: where failure points clustered, user concern around what happened to their information, and unclear next steps throughout the flow.</p>
+      <div class="cs-image-gallery" style="margin-top:1rem;">
+        <div class="cs-image-hero">
+          <img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f3deaf41f88cd37ed5ba66_Clear%20Sign%202-0%20Mood%20Board.png" alt="Collection of screenshots for competitive analysis and mood board" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section">
+      <p class="cs-section-num">03 � New Ideas</p>
+      <h2 class="cs-section-title">Restructuring the Closing Experience</h2>
+      <p class="cs-body-text">Clear Sign has two major events: a <strong>pre-signing portal</strong> (view and interact with documents before closing) and the <strong>closing room</strong> (video conference check-in with a notary). My approach: move as much interaction as possible out of the closing room and into the pre-signing portal to reduce friction at the most stressful moment.</p>
+      <p class="cs-body-text" style="margin-top:1rem;">The core questions driving every design decision:</p>
+      <div class="cs-constraints-grid" style="margin-top:1rem;">
+        <div class="cs-constraint-card"><p class="cs-constraint-label">What can we automate?</p><p class="cs-constraint-desc">Reduce the number of required user interactions by automating steps that don't need human decision-making.</p></div>
+        <div class="cs-constraint-card"><p class="cs-constraint-label">Can we move processes earlier?</p><p class="cs-constraint-desc">Move tasks out of the closing room into the pre-signing portal where lower stakes allow for more exploration and error recovery.</p></div>
+        <div class="cs-constraint-card"><p class="cs-constraint-label">What information is truly needed?</p><p class="cs-constraint-desc">Content must be useful and precise, with no filler. Users always need to know what to do and what comes next.</p></div>
+        <div class="cs-constraint-card"><p class="cs-constraint-label">Access to help at all times</p><p class="cs-constraint-desc">Users expressed concern about getting stuck. Help access and status clarity needed to be available throughout every state.</p></div>
+      </div>
+
+      <h3 style="font-family:var(--font-display); font-size:1.375rem; font-weight:700; letter-spacing:-0.01em; color:var(--ink); margin-top:2rem; margin-bottom:1rem;">Updating the Closing Room</h3>
+      <p class="cs-body-text">The notary is the facilitator. Designs evolved from displaying basic information to gradually surfacing user status and check-in progress, giving the notary confidence about where each participant stood without interrupting the process.</p>
+      <div class="cs-image-gallery" style="margin-top:1rem;">
+        <div class="cs-image-grid">
+          <div class="cs-img-card"><img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f59d14e87735c000e84c5f_image%201.png" alt="Closing room design iteration 1" loading="lazy"></div>
+          <div class="cs-img-card"><img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f59d146cdfc1aa62ec425a_image%202.png" alt="Closing room design iteration 2" loading="lazy"></div>
+          <div class="cs-img-card"><img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f59d145e611edc55e7ab92_image%204.png" alt="Closing room design iteration 3" loading="lazy"></div>
+          <div class="cs-img-card"><img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f59d14dd8532124f540989_image%205.png" alt="Closing room design iteration 4" loading="lazy"></div>
+          <div class="cs-img-card"><img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f59d14f462a240219bcc7c_image%208.png" alt="Closing room design iteration 5" loading="lazy"></div>
+          <div class="cs-img-card"><img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f59d14108709739a90168d_image%206.png" alt="Closing room design iteration 6" loading="lazy"></div>
+        </div>
+      </div>
+
+      <h3 style="font-family:var(--font-display); font-size:1.375rem; font-weight:700; letter-spacing:-0.01em; color:var(--ink); margin-top:2rem; margin-bottom:1rem;">Updating the Pre-Signing Portal</h3>
+      <p class="cs-body-text">The goal here was to provide sufficient instruction on what the user needs to accomplish, while giving them contextual information to build confidence before they enter the closing room.</p>
+      <div class="cs-image-gallery" style="margin-top:1rem;">
+        <div class="cs-image-grid">
+          <div class="cs-img-card"><img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f5aebbcbd3b818ad0aa731_image%2038.png" alt="Pre-signing portal design screen 1" loading="lazy"></div>
+          <div class="cs-img-card"><img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f5aeba164a1823bfdade58_image%2045.png" alt="Pre-signing portal design screen 2" loading="lazy"></div>
+          <div class="cs-img-card"><img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f5aeba1e5267631d4765f6_image%2040.png" alt="Pre-signing portal design screen 3" loading="lazy"></div>
+          <div class="cs-img-card"><img src="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/66f5aebb78138045843c03a6_image%2041.png" alt="Pre-signing portal design screen 4" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section">
+      <p class="cs-section-num">04 � Reflection</p>
+      <h2 class="cs-section-title">What Happened Next</h2>
+      <p class="cs-body-text">This project was unfinished. I was laid off at this stage of the design process. The parallel designs represented promising directions grounded in solid research, competitive analysis, and usability data. The intent was that the team would evaluate these with usability testers and iterate from there.</p>
+      <div class="cs-outcome-box">
+        <p class="cs-outcome-title">Methods Used</p>
+        <ul class="cs-outcome-list">
+          <li><strong>NPS survey analysis:</strong> Categorized and linked feedback from multiple systems to surface patterns</li>
+          <li><strong>Unmoderated usability testing:</strong> 7 participants via Usertesting.com against a pre-defined criteria</li>
+          <li><strong>Google Analytics:</strong> Clicks, time on page, drop-off points, and downloads</li>
+          <li><strong>Competitive analysis:</strong> Mapped expectations from similar technology and processes</li>
+          <li><strong>Parallel design:</strong> Two designers working independently to maximize solution range</li>
+          <li><strong>Design system implementation:</strong> Applied newly adopted design system throughout all new work</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ------- CASE STUDY: WCAG ------- -->
+</main>
+
+<!-- ------- LIGHTBOX ------- -->
+<div class="lb-overlay" id="lb-overlay" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <div class="lb-inner" id="lb-inner">
+    <img class="lb-img" id="lb-img" src="" alt="">
+  </div>
+</div>
+<button class="lb-close" id="lb-close" aria-label="Close image viewer" type="button">?</button>
+<button class="lb-prev" id="lb-prev" aria-label="Previous image" type="button">�</button>
+<button class="lb-next" id="lb-next" aria-label="Next image" type="button">�</button>
+<p class="lb-caption" id="lb-caption"></p>
+<p class="lb-counter" id="lb-counter"></p>
+<footer aria-label="Site footer">
+  <div class="footer-inner">
+    <span class="footer-copy">� 2025 Chris Beard � UX Detroit</span>
+    <a class="footer-link" href="https://www.linkedin.com/in/beard02/" target="_blank" rel="noopener">LinkedIn ?</a>
+  </div>
+</footer>
+<script>
+// -- LIGHTBOX ------------------------------------------------------------------
+(function () {
+  const overlay  = document.getElementById('lb-overlay');
+  const lbImg    = document.getElementById('lb-img');
+  const lbClose  = document.getElementById('lb-close');
+  const lbPrev   = document.getElementById('lb-prev');
+  const lbNext   = document.getElementById('lb-next');
+  const lbCap    = document.getElementById('lb-caption');
+  const lbCount  = document.getElementById('lb-counter');
+
+  let gallery = [];   // [{src, alt, label}]
+  let current = 0;
+  let prevFocus = null;
+
+  function buildGalleries() {
+    document.querySelectorAll('.cs-image-hero img').forEach(img => {
+      img.classList.add('cs-lightbox-img');
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
+      img.setAttribute('aria-label', 'View image in full size: ' + (img.alt || 'image'));
+      img.addEventListener('click', () => openFromImg(img));
+      img.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFromImg(img); }
+      });
+    });
+    document.querySelectorAll('.cs-img-card').forEach(card => {
+      const img = card.querySelector('img');
+      if (!img) return;
+      img.classList.add('cs-lightbox-img');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', 'View image in full size: ' + (img.alt || 'image'));
+      card.addEventListener('click', () => openFromImg(img));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openFromImg(img); }
+      });
+    });
+  }
+
+  function openFromImg(img) {
+    const activePage = document.querySelector('main') || document.body;
+    if (!activePage) return;
+
+    const imgs = Array.from(activePage.querySelectorAll('.cs-lightbox-img'));
+    gallery = imgs.map(i => ({
+      src:   i.src,
+      alt:   i.alt || '',
+      label: i.closest('.cs-img-card')?.querySelector('.cs-img-label')?.textContent?.trim() || ''
+    }));
+    current = imgs.indexOf(img);
+    if (current === -1) current = 0;
+
+    prevFocus = document.activeElement;
+    showSlide(current);
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
+  function showSlide(idx) {
+    current = idx;
+    const item = gallery[idx];
+    lbImg.src = item.src;
+    lbImg.alt = item.alt;
+
+    // Caption
+    lbCap.textContent = item.label || item.alt || '';
+
+    // Counter � only show when there's more than one image
+    if (gallery.length > 1) {
+      lbCount.textContent = (idx + 1) + ' / ' + gallery.length;
+    } else {
+      lbCount.textContent = '';
+    }
+
+    // Prev / next visibility
+    lbPrev.classList.toggle('hidden', gallery.length <= 1 || idx === 0);
+    lbNext.classList.toggle('hidden', gallery.length <= 1 || idx === gallery.length - 1);
+
+    // Animate img swap
+    lbImg.style.animation = 'none';
+    lbImg.offsetHeight; // reflow
+    lbImg.style.animation = '';
+  }
+
+  function close() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    gallery = [];
+    lbImg.src = '';
+    if (prevFocus) { prevFocus.focus(); prevFocus = null; }
+  }
+
+  // Controls
+  lbClose.addEventListener('click', close);
+  lbPrev.addEventListener('click', () => { if (current > 0) showSlide(current - 1); });
+  lbNext.addEventListener('click', () => { if (current < gallery.length - 1) showSlide(current + 1); });
+
+  // Click backdrop to close
+  overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (!overlay.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft'  && current > 0) showSlide(current - 1);
+    if (e.key === 'ArrowRight' && current < gallery.length - 1) showSlide(current + 1);
+    // Trap focus inside overlay
+    if (e.key === 'Tab') {
+      const focusable = [lbClose, lbPrev, lbNext].filter(el => !el.classList.contains('hidden'));
+      if (!focusable.length) return;
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  // Touch / swipe support
+  let touchStartX = 0;
+  overlay.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  overlay.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(dx) < 40) return;
+    if (dx < 0 && current < gallery.length - 1) showSlide(current + 1);
+    if (dx > 0 && current > 0) showSlide(current - 1);
+  }, { passive: true });
+
+  // Re-build galleries after page transitions
+  const origShowPage = window.showPage;
+  const origShowCS   = window.showCaseStudy;
+  window.showPage = function(id) { origShowPage(id); };
+  window.showCaseStudy = function(slug) { origShowCS(slug); };
+
+  // Init on load
+  document.addEventListener('DOMContentLoaded', buildGalleries);
+  // Also run immediately in case DOM already ready
+  if (document.readyState !== 'loading') buildGalleries();
+})();
+</script>
+</body>
+</html>
