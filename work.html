@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFQD566YZS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  var storedConsent;
+  try { storedConsent = localStorage.getItem('cookie-consent'); } catch (e) {}
+  gtag('consent', 'default', { analytics_storage: storedConsent === 'granted' ? 'granted' : 'denied' });
+  gtag('js', new Date());
+  gtag('config', 'G-MFQD566YZS');
+</script>
 <title>Work — Chris Beard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,6 +50,15 @@
       <div class="work-row-right"><span class="work-row-metric">+40% Discoverability</span><span class="work-row-arrow">→</span></div>
     </div>
 
+    <div class="work-row" onclick="location.href='cs-nexsys.html'" tabindex="0" role="button" aria-label="Read eClosing Platform case study" >
+      <div class="work-row-left">
+        <p class="work-row-co">Nexsys Technologies · 2018–2020</p>
+        <p class="work-row-title">eClosing Platform: From In-Person MVP to Industry-First Remote Notarization</p>
+        <div class="work-row-tags"><span class="tag tag-industry">Mortgage Tech</span><span class="tag tag-platform">B2B · Web + Video</span><span class="tag tag-year">3-Phase Project</span></div>
+      </div>
+      <div class="work-row-right"><span class="work-row-metric">15→3% Failure Rate</span><span class="work-row-arrow">→</span></div>
+    </div>
+
     <div class="work-row" onclick="location.href='cs-clearsign.html'" tabindex="0" role="button" aria-label="Read Clear Sign Redesign case study" >
       <div class="work-row-left">
         <p class="work-row-co">Amrock · 2022</p>
@@ -55,15 +75,6 @@
         <div class="work-row-tags"><span class="tag tag-industry">Accessibility</span><span class="tag tag-platform">Enterprise</span><span class="tag tag-year">Web + Mobile</span></div>
       </div>
       <div class="work-row-right"><span class="work-row-metric">Full Audit + Roadmap</span><span class="work-row-arrow">→</span></div>
-    </div>
-
-    <div class="work-row" onclick="location.href='cs-nexsys.html'" tabindex="0" role="button" aria-label="Read eClosing Platform case study" >
-      <div class="work-row-left">
-        <p class="work-row-co">Nexsys Technologies · 2018–2020</p>
-        <p class="work-row-title">eClosing Platform: From In-Person MVP to Industry-First Remote Notarization</p>
-        <div class="work-row-tags"><span class="tag tag-industry">Mortgage Tech</span><span class="tag tag-platform">B2B · Web + Video</span><span class="tag tag-year">3-Phase Project</span></div>
-      </div>
-      <div class="work-row-right"><span class="work-row-metric">15→3% Failure Rate</span><span class="work-row-arrow">→</span></div>
     </div>
 
     <div class="work-row" onclick="location.href='cs-downshift.html'" tabindex="0" role="button" aria-label="Read Downshift case study" >
@@ -86,6 +97,23 @@
   </div>
 </div>
 </main>
-
+<footer aria-label="Site footer">
+  <div class="footer-inner">
+    <span class="footer-copy">© 2025 Chris Beard · UX Detroit</span>
+    <a class="footer-link" href="privacy.html">Privacy Policy</a>
+    <button class="footer-link cookie-prefs-link" type="button">Cookie Preferences</button>
+    <a class="footer-link" href="https://www.linkedin.com/in/beard02/" target="_blank" rel="noopener">LinkedIn →</a>
+  </div>
+</footer>
+<div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie consent" hidden>
+  <p class="cookie-banner-title">Cookie Settings</p>
+  <p class="cookie-banner-text">We use Google Analytics to understand how visitors use this site. Nothing is tracked until you accept, and you can change your choice anytime via "Cookie Preferences" in the footer.</p>
+  <a class="cookie-banner-link" href="privacy.html">See our Privacy Policy</a>
+  <div class="cookie-banner-actions">
+    <button id="cookie-decline" class="cookie-btn" type="button">Decline</button>
+    <button id="cookie-accept" class="cookie-btn cookie-btn-accept" type="button">Accept</button>
+  </div>
+</div>
+<script src="consent.js"></script>
 </body>
 </html>

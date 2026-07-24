@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFQD566YZS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  var storedConsent;
+  try { storedConsent = localStorage.getItem('cookie-consent'); } catch (e) {}
+  gtag('consent', 'default', { analytics_storage: storedConsent === 'granted' ? 'granted' : 'denied' });
+  gtag('js', new Date());
+  gtag('config', 'G-MFQD566YZS');
+</script>
 <title>eClosing Platform — Chris Beard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -105,22 +116,32 @@
       <p class="cs-body-text">Once the platform was live, we had something we didn't have in Phase 1: real users in real closing scenarios. We ran <strong>usability testing sessions with notaries</strong> (the power users of the platform, present at every single closing) to understand where the experience was breaking down and why.</p>
       <p class="cs-body-text" style="margin-top:1rem;">Two significant failure patterns emerged from that research. Both were rooted in the same physical reality we had designed around from the start: a tablet, passed between people, in a high-stakes environment.</p>
 
-      <div class="cs-constraints-grid" style="margin-top:1.5rem;">
-        <div class="cs-constraint-card">
-          <p class="cs-constraint-label">Failure point: corner interactions</p>
-          <p class="cs-constraint-desc">When passing the tablet between the notary and borrower, content and controls positioned in the corners were frequently triggered accidentally, causing errors or, in some cases, unintended cancellation of orders. This was a direct consequence of natural hand positioning during handoff.</p>
+      <div class="cs-constraint-pairs">
+        <div class="cs-constraint-pair">
+          <div class="cs-constraint-card cs-constraint-card--problem">
+            <span class="cs-constraint-kicker">Failure Point</span>
+            <p class="cs-constraint-label">Corner interactions</p>
+            <p class="cs-constraint-desc">When passing the tablet between the notary and borrower, content and controls positioned in the corners were frequently triggered accidentally, causing errors or, in some cases, unintended cancellation of orders. This was a direct consequence of natural hand positioning during handoff.</p>
+          </div>
+          <span class="cs-constraint-connector" aria-hidden="true">→</span>
+          <div class="cs-constraint-card cs-constraint-card--resolution">
+            <span class="cs-constraint-kicker">Resolution</span>
+            <p class="cs-constraint-label">Center the critical actions</p>
+            <p class="cs-constraint-desc">Interactive elements were relocated away from corners toward safer central and mid-screen zones. Destructive or consequential actions were given additional confirmation steps to prevent accidental triggers during physical handoff moments.</p>
+          </div>
         </div>
-        <div class="cs-constraint-card">
-          <p class="cs-constraint-label">Resolution: center the critical actions</p>
-          <p class="cs-constraint-desc">Interactive elements were relocated away from corners toward safer central and mid-screen zones. Destructive or consequential actions were given additional confirmation steps to prevent accidental triggers during physical handoff moments.</p>
-        </div>
-        <div class="cs-constraint-card">
-          <p class="cs-constraint-label">Failure point: borrower security gaps</p>
-          <p class="cs-constraint-desc">If a borrower missed an interaction (didn't tap, didn't sign, didn't confirm), the design didn't always prevent the notary from advancing on their behalf. In a legally binding closing, this was an ethical and legal exposure.</p>
-        </div>
-        <div class="cs-constraint-card">
-          <p class="cs-constraint-label">Resolution: enforced borrower gates</p>
-          <p class="cs-constraint-desc">Stronger borrower-specific security gates were introduced: states that could only be completed by the borrower, with no notary override path. This preserved the integrity of consent and legally required borrower actions throughout the signing flow.</p>
+        <div class="cs-constraint-pair">
+          <div class="cs-constraint-card cs-constraint-card--problem">
+            <span class="cs-constraint-kicker">Failure Point</span>
+            <p class="cs-constraint-label">Borrower security gaps</p>
+            <p class="cs-constraint-desc">If a borrower missed an interaction (didn't tap, didn't sign, didn't confirm), the design didn't always prevent the notary from advancing on their behalf. In a legally binding closing, this was an ethical and legal exposure.</p>
+          </div>
+          <span class="cs-constraint-connector" aria-hidden="true">→</span>
+          <div class="cs-constraint-card cs-constraint-card--resolution">
+            <span class="cs-constraint-kicker">Resolution</span>
+            <p class="cs-constraint-label">Enforced borrower gates</p>
+            <p class="cs-constraint-desc">Stronger borrower-specific security gates were introduced: states that could only be completed by the borrower, with no notary override path. This preserved the integrity of consent and legally required borrower actions throughout the signing flow.</p>
+          </div>
         </div>
       </div>
 
@@ -238,6 +259,8 @@
 <footer aria-label="Site footer">
   <div class="footer-inner">
     <span class="footer-copy">© 2025 Chris Beard · UX Detroit</span>
+    <a class="footer-link" href="privacy.html">Privacy Policy</a>
+    <button class="footer-link cookie-prefs-link" type="button">Cookie Preferences</button>
     <a class="footer-link" href="https://www.linkedin.com/in/beard02/" target="_blank" rel="noopener">LinkedIn →</a>
   </div>
 </footer>
@@ -382,5 +405,15 @@
   if (document.readyState !== 'loading') buildGalleries();
 })();
 </script>
+<div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie consent" hidden>
+  <p class="cookie-banner-title">Cookie Settings</p>
+  <p class="cookie-banner-text">We use Google Analytics to understand how visitors use this site. Nothing is tracked until you accept, and you can change your choice anytime via "Cookie Preferences" in the footer.</p>
+  <a class="cookie-banner-link" href="privacy.html">See our Privacy Policy</a>
+  <div class="cookie-banner-actions">
+    <button id="cookie-decline" class="cookie-btn" type="button">Decline</button>
+    <button id="cookie-accept" class="cookie-btn cookie-btn-accept" type="button">Accept</button>
+  </div>
+</div>
+<script src="consent.js"></script>
 </body>
 </html>
