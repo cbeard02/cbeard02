@@ -390,7 +390,8 @@
   .resume-bullets li { font-size: 0.9375rem; color: var(--ink-2); line-height: 1.7; padding-left: 1.25rem; position: relative; font-weight: 400; }
   .resume-bullets li::before { content: '•'; position: absolute; left: 0; color: var(--ink-3); font-size: 1rem; }
   .resume-bullets li strong { font-weight: 600; color: var(--ink); }
-  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+  .skills-col-stack { display: flex; flex-direction: column; gap: 1.5rem; }
   .skills-col-title { font-size: 0.9375rem; font-weight: 600; color: var(--heading); margin-bottom: 0.75rem; }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .skill-tag { font-size: 0.875rem; padding: 0.3rem 0.75rem; background: var(--bg-warm); border: 1px solid var(--border); border-radius: 2px; color: var(--ink-2); font-family: var(--font-mono); letter-spacing: 0.03em; }
