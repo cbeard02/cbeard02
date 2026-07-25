@@ -78,8 +78,13 @@
     background: var(--bg-dark);
     border-bottom: 1px solid rgba(255,255,255,0.08);
     padding: 0 2.5rem;
-    display: flex; align-items: center; justify-content: space-between;
     height: 60px;
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex; align-items: center; justify-content: space-between;
   }
   .nav-logo {
     font-family: var(--font-display); font-size: 1.125rem; font-weight: 600;
@@ -92,6 +97,32 @@
     transition: color var(--transition); cursor: pointer;
   }
   .nav-links a:hover { color: #ffffff; }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  .nav-toggle-bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 1px;
+    transition: transform var(--transition), opacity var(--transition);
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
   .nav-cta {
     background: var(--accent) !important; color: #ffffff !important;
     padding: 0.45rem 1.1rem !important; border-radius: var(--radius) !important;
@@ -475,7 +506,23 @@
     .hero-h1 { font-size: 2.25rem; }
     .metrics-inner { grid-template-columns: repeat(2, 1fr); }
     .bento-grid { grid-template-columns: 1fr; }
-    .nav-links li:not(:last-child) { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: var(--bg-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0.5rem 1.25rem 1rem;
+    }
+    .nav-links.nav-links--open { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 0.85rem 0; }
     .cs-image-grid { grid-template-columns: 1fr; }
     .cs-image-gallery--compact .cs-image-grid { grid-template-columns: repeat(2, 1fr); }
   }

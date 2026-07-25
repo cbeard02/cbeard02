@@ -25,14 +25,20 @@
 <a class="skip-nav" href="#main-content">Skip to main content</a>
 
 <nav aria-label="Main navigation">
+  <div class="nav-inner">
   <a class="nav-logo" href="index.html">Chris Beard</a>
-  <ul class="nav-links">
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="work.html">Work</a></li>
     <li><a href="resume.html" aria-current="page" class="nav-active">Résumé</a></li>
     <li><a href="https://www.linkedin.com/in/beard02/" target="_blank" rel="noopener">LinkedIn</a></li>
-    <li><a class="nav-cta" href="work.html">View My Work →</a></li>
   </ul>
+  </div>
 </nav>
 
 <main id="main-content">
@@ -212,6 +218,7 @@
     <button id="cookie-accept" class="cookie-btn cookie-btn-accept" type="button">Accept</button>
   </div>
 </div>
+<script src="nav.js"></script>
 <script src="consent.js"></script>
 </body>
 </html>
