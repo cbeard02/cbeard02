@@ -36,6 +36,7 @@
     <li><a href="index.html">Home</a></li>
     <li><a href="work.html" aria-current="page" class="nav-active">Work</a></li>
     <li><a href="resume.html">Résumé</a></li>
+    <li><a href="photography.html">Photography</a></li>
     <li><a href="https://www.linkedin.com/in/beard02/" target="_blank" rel="noopener">LinkedIn</a></li>
   </ul>
   </div>
@@ -43,63 +44,110 @@
 
 <main id="main-content">
 <div class="work-header">
-    <h1 class="work-h1">Projects that moved the needle.</h1>
-    <p class="work-sub">A decade of enterprise UX across mortgage tech, fintech, real estate, and social platforms.</p>
+    <h1 class="work-h1">My Work</h1>
+    <p class="work-sub">A decade of designing ecperiences across mortgage tech, fintech, real estate, and social platforms.</p>
   </div>
   <div class="work-list">
-    <div class="work-row" onclick="location.href='cs-uwm.html'" tabindex="0" role="button" aria-label="Read UWM case study" >
-      <div class="work-row-left">
-        <p class="work-row-co">United Wholesale Mortgage · 2025–Present</p>
-        <p class="work-row-title">Projecting a 40% Lift in Discoverability Through Navigation Restructure & AI Productivity Center</p>
-        <div class="work-row-tags"><span class="tag tag-industry">Fintech</span><span class="tag tag-platform">B2B SaaS</span><span class="tag tag-year">Web App</span></div>
+    <article class="work-card">
+      <div>
+        <p class="work-card-co">United Wholesale Mortgage · 2025–Present</p>
+        <h2 class="work-card-title">Projecting a 40% Lift in Discoverability Through Navigation Restructure</h2>
+        <p class="work-card-desc">Restructuring broker-facing navigation and product naming so thousands of daily lending decisions move faster, with more confidence.</p>
+        <div class="work-card-tags"><span class="pill-tag">Fintech</span><span class="pill-tag">B2B SaaS</span><span class="pill-tag">Web App</span></div>
+        <div class="work-card-stats">
+          <div><span class="work-card-stat-num">+40%</span><span class="work-card-stat-label">Projected Discoverability</span></div>
+        </div>
+        <a class="work-card-btn" href="cs-uwm.html" aria-label="View case study: UWM navigation restructure">View Case Study <span class="work-card-btn-arrow" aria-hidden="true">→</span></a>
       </div>
-      <div class="work-row-right"><span class="work-row-metric">+40% Discoverability</span><span class="work-row-arrow">→</span></div>
-    </div>
+      <div class="work-card-media" style="background:#e9f3fc;">
+        <svg width="80" height="60" viewBox="0 0 80 60" fill="none" opacity="0.3"><rect x="4" y="4" width="72" height="10" rx="2" fill="#0F1C2E"/><rect x="4" y="20" width="48" height="6" rx="2" fill="#0F1C2E"/><rect x="4" y="32" width="72" height="20" rx="2" fill="#1B4F8A"/><rect x="8" y="36" width="24" height="3" rx="1" fill="#F4F7FB" opacity="0.7"/><rect x="8" y="43" width="16" height="3" rx="1" fill="#F4F7FB" opacity="0.4"/><rect x="56" y="36" width="16" height="10" rx="1" fill="#F4F7FB" opacity="0.5"/></svg>
+      </div>
+    </article>
 
-    <div class="work-row" onclick="location.href='cs-nexsys.html'" tabindex="0" role="button" aria-label="Read eClosing Platform case study" >
-      <div class="work-row-left">
-        <p class="work-row-co">Nexsys Technologies · 2018–2020</p>
-        <p class="work-row-title">eClosing Platform: From In-Person MVP to Industry-First Remote Notarization</p>
-        <div class="work-row-tags"><span class="tag tag-industry">Mortgage Tech</span><span class="tag tag-platform">B2B · Web + Video</span><span class="tag tag-year">3-Phase Project</span></div>
+    <article class="work-card">
+      <div>
+        <p class="work-card-co">Nexsys Technologies · 2018–2020</p>
+        <h2 class="work-card-title">eClosing Platform: From In-Person MVP to Industry-First Remote Notarization</h2>
+        <p class="work-card-desc">Taking an eClosing platform from a clean-room, in-person MVP to an industry-first remote video notarization experience launched at the onset of Covid.</p>
+        <div class="work-card-tags"><span class="pill-tag">Mortgage Tech</span><span class="pill-tag">B2B · Web + Video</span><span class="pill-tag">3-Phase Project</span></div>
+        <div class="work-card-stats">
+          <div><span class="work-card-stat-num">15→3%</span><span class="work-card-stat-label">Failure Rate Reduction</span></div>
+          <div><span class="work-card-stat-num">3</span><span class="work-card-stat-label">Design Phases</span></div>
+        </div>
+        <a class="work-card-btn" href="cs-nexsys.html" aria-label="View case study: Nexsys eClosing platform">View Case Study <span class="work-card-btn-arrow" aria-hidden="true">→</span></a>
       </div>
-      <div class="work-row-right"><span class="work-row-metric">15→3% Failure Rate</span><span class="work-row-arrow">→</span></div>
-    </div>
+      <div class="work-card-media">
+        <img src="images/nexsys-ron.jpg" alt="A laptop showing a video conference of several people with a document on screen being signed during a remote online notarization session" loading="lazy">
+      </div>
+    </article>
 
-    <div class="work-row" onclick="location.href='cs-clearsign.html'" tabindex="0" role="button" aria-label="Read Clear Sign Redesign case study" >
-      <div class="work-row-left">
-        <p class="work-row-co">Amrock · 2022</p>
-        <p class="work-row-title">Clear Sign Redesign: Mobile-First eClosing Platform Reimagined</p>
-        <div class="work-row-tags"><span class="tag tag-industry">Mortgage Tech</span><span class="tag tag-platform">Mobile-First Web</span></div>
+    <article class="work-card">
+      <div>
+        <p class="work-card-co">Amrock · 2022</p>
+        <h2 class="work-card-title">Clear Sign Redesign: Mobile-First eClosing Platform Reimagined</h2>
+        <p class="work-card-desc">Reimagining a mortgage closing platform's Signer and Notary paths from a mobile-first perspective, backed by usability research and competitive analysis.</p>
+        <div class="work-card-tags"><span class="pill-tag">Mortgage Tech</span><span class="pill-tag">Mobile-First Web</span></div>
+        <div class="work-card-stats">
+          <div><span class="work-card-stat-num">Parallel</span><span class="work-card-stat-label">Design Exploration</span></div>
+          <div><span class="work-card-stat-num">7</span><span class="work-card-stat-label">Usability Test Participants</span></div>
+        </div>
+        <a class="work-card-btn" href="cs-clearsign.html" aria-label="View case study: Clear Sign redesign">View Case Study <span class="work-card-btn-arrow" aria-hidden="true">→</span></a>
       </div>
-      <div class="work-row-right"><span class="work-row-metric">Parallel Design</span><span class="work-row-arrow">→</span></div>
-    </div>
+      <div class="work-card-media">
+        <img src="images/clearsign-redesign.png" alt="Several screenshots of the UI for the Clear Sign Redesign" loading="lazy">
+      </div>
+    </article>
 
-    <div class="work-row" onclick="location.href='cs-wcag.html'" tabindex="0" role="button" aria-label="Read WCAG Audit case study" >
-      <div class="work-row-left">
-        <p class="work-row-co">Amrock · 2022</p>
-        <p class="work-row-title">Clear Sign Accessibility Audit: WCAG 2.1 AA Across an Enterprise eClosing Suite</p>
-        <div class="work-row-tags"><span class="tag tag-industry">Accessibility</span><span class="tag tag-platform">Enterprise</span><span class="tag tag-year">Web + Mobile</span></div>
+    <article class="work-card">
+      <div>
+        <p class="work-card-co">Amrock · 2022</p>
+        <h2 class="work-card-title">Clear Sign Accessibility Audit: WCAG 2.1 AA Across an Enterprise eClosing Suite</h2>
+        <p class="work-card-desc">Bringing an enterprise eClosing suite up to WCAG 2.1 AA, moving accessibility from a compliance checkbox to a first-class design practice.</p>
+        <div class="work-card-tags"><span class="pill-tag">Accessibility</span><span class="pill-tag">Enterprise</span><span class="pill-tag">Web + Mobile</span></div>
+        <div class="work-card-stats">
+          <div><span class="work-card-stat-num">WCAG</span><span class="work-card-stat-label">2.1 AA Targeted</span></div>
+          <div><span class="work-card-stat-num">4</span><span class="work-card-stat-label">Agile Teams Coordinated</span></div>
+        </div>
+        <a class="work-card-btn" href="cs-wcag.html" aria-label="View case study: Clear Sign accessibility audit">View Case Study <span class="work-card-btn-arrow" aria-hidden="true">→</span></a>
       </div>
-      <div class="work-row-right"><span class="work-row-metric">Full Audit + Roadmap</span><span class="work-row-arrow">→</span></div>
-    </div>
+      <div class="work-card-media" style="background:#e9f3fc; padding:1.5rem;">
+        <img src="images/wcag.svg" alt="Custom graphic showing WCAG Web Content Accessibility Guidelines with accessibility icons" loading="lazy">
+      </div>
+    </article>
 
-    <div class="work-row" onclick="location.href='cs-downshift.html'" tabindex="0" role="button" aria-label="Read Downshift case study" >
-      <div class="work-row-left">
-        <p class="work-row-co">Downshift.io · 2015–2016</p>
-        <p class="work-row-title">Streamlining Automotive Event Management Through a Dual-Purpose Social Platform</p>
-        <div class="work-row-tags"><span class="tag tag-industry">Social · Automotive</span><span class="tag tag-platform">Web + Mobile</span></div>
+    <article class="work-card">
+      <div>
+        <p class="work-card-co">Downshift.io · 2015–2016</p>
+        <h2 class="work-card-title">Streamlining Automotive Event Management Through a Dual-Purpose Social Platform</h2>
+        <p class="work-card-desc">Designing the MVP for a social platform that let car owners and event-goers register, follow, and share vehicles across three distinct user groups.</p>
+        <div class="work-card-tags"><span class="pill-tag">Social · Automotive</span><span class="pill-tag">Web + Mobile</span></div>
+        <div class="work-card-stats">
+          <div><span class="work-card-stat-num">MVP</span><span class="work-card-stat-label">Soft Launch Completed</span></div>
+          <div><span class="work-card-stat-num">3</span><span class="work-card-stat-label">User Groups Defined</span></div>
+        </div>
+        <a class="work-card-btn" href="cs-downshift.html" aria-label="View case study: Downshift social platform">View Case Study <span class="work-card-btn-arrow" aria-hidden="true">→</span></a>
       </div>
-      <div class="work-row-right"><span class="work-row-metric">MVP Launch</span><span class="work-row-arrow">→</span></div>
-    </div>
+      <div class="work-card-media">
+        <img src="images/downshift-hero.jpg" alt="Several screenshots show the website and mobile app of the Downshift.io product" loading="lazy">
+      </div>
+    </article>
 
-    <div class="work-row" onclick="location.href='cs-appraisals.html'" tabindex="0" role="button" aria-label="Read My Appraisals case study" >
-      <div class="work-row-left">
-        <p class="work-row-co">Amrock · 2014–2015</p>
-        <p class="work-row-title">My Appraisals: Cutting Field Worker Order Acceptance from Hours to Minutes</p>
-        <div class="work-row-tags"><span class="tag tag-industry">Real Estate</span><span class="tag tag-platform">iOS + Android</span></div>
+    <article class="work-card">
+      <div>
+        <p class="work-card-co">Amrock · 2014–2015</p>
+        <h2 class="work-card-title">My Appraisals: Cutting Field Worker Order Acceptance from Hours to Minutes</h2>
+        <p class="work-card-desc">Streamlining how field appraisers accept and manage orders, cutting acceptance time from hours to minutes across web and mobile.</p>
+        <div class="work-card-tags"><span class="pill-tag">Real Estate</span><span class="pill-tag">iOS + Android</span></div>
+        <div class="work-card-stats">
+          <div><span class="work-card-stat-num">Hours→Min</span><span class="work-card-stat-label">Order Acceptance Time</span></div>
+          <div><span class="work-card-stat-num">55</span><span class="work-card-stat-label">Avg. User Age</span></div>
+        </div>
+        <a class="work-card-btn" href="cs-appraisals.html" aria-label="View case study: My Appraisals">View Case Study <span class="work-card-btn-arrow" aria-hidden="true">→</span></a>
       </div>
-      <div class="work-row-right"><span class="work-row-metric">Hours → Minutes</span><span class="work-row-arrow">→</span></div>
-    </div>
+      <div class="work-card-media">
+        <img src="images/myappraisals-hero.png" alt="Several screenshots of the mobile version of the My Appraisals app" loading="lazy">
+      </div>
+    </article>
   </div>
 </div>
 </main>
