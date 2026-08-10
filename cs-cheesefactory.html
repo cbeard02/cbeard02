@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -14,7 +14,7 @@
   gtag('js', new Date());
   gtag('config', 'G-MFQD566YZS');
 </script>
-<title>Downshift.io — Chris Beard</title>
+<title>Cheese Factory — Chris Beard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -43,96 +43,99 @@
   </div>
 </nav>
 
+<!--
+  NOTE: Written content is based on three overview paragraphs from the original
+  portfolio write-up. Visuals are a low-fidelity flow wireframe, a full-fidelity
+  flow diagram, and 12 individual full-fidelity screens (images/cheesefactory-*.png).
+  Outcome/metrics data was not recoverable from either source. Expand the page
+  with real detail if that becomes available.
+-->
+
 <main id="main-content">
 <div class="cs-hero">
     <div class="cs-hero-inner">
       <a class="cs-back" href="work.html">← Back to Work</a>
-      <p class="cs-co-label">Downshift.io · UX Designer · 2015–2016</p>
-      <h1 class="cs-h1">Streamlining Automotive Event Management Through a Dual-Purpose Social Platform</h1>
+      <p class="cs-co-label">Cheese Factory · UX Designer · Internal Hackathon</p>
+      <h1 class="cs-h1">Extending an Internal Idea-Submission Platform to Mobile in a 24-Hour Hackathon</h1>
       <div class="cs-metrics-row">
-        <div class="cs-metric-box"><span class="cs-metric-num">3</span><span class="cs-metric-label">Distinct user groups defined</span></div>
-        <div class="cs-metric-box"><span class="cs-metric-num">MVP</span><span class="cs-metric-label">Soft launch completed</span></div>
-        <div class="cs-metric-box"><span class="cs-metric-num">Social</span><span class="cs-metric-label">+ Event platform combined</span></div>
+        <div class="cs-metric-box"><span class="cs-metric-num">24</span><span class="cs-metric-label">Hour build sprint</span></div>
+        <div class="cs-metric-box"><span class="cs-metric-num">2nd</span><span class="cs-metric-label">Place finish at the hackathon</span></div>
+        <div class="cs-metric-box"><span class="cs-metric-num">Shipped</span><span class="cs-metric-label">Implemented for team members to use</span></div>
       </div>
     </div>
   </div>
   <div class="cs-body">
     <div class="cs-section">
       <p class="cs-section-num">01 · Overview</p>
-      <h2 class="cs-section-title">About Downshift</h2>
-      <p class="cs-body-text">Downshift was a social media startup built around automotive meetups. Its goal was to create an easy way for attendees and car owners to register for events, while giving the community the ability to like, follow, and view their favorite vehicles. I was brought in to create the initial MVP design for the platform, collaborating closely with founders to identify user roles, workflows, and the key features needed to serve three distinct user groups.</p>
+      <h2 class="cs-section-title">About the Cheese Factory</h2>
+      <p class="cs-body-text">The Cheese Factory is an internal platform where any team member can submit an idea to improve any part of the business or facilities. Submitted ideas are vetted by a team to determine whether they're viable, already in progress, or already exist elsewhere in the organization without enough awareness. During an internal 24-hour hackathon, our team set out to design and build a mobile version of the platform to extend that process beyond the desktop.</p>
       <div class="cs-image-gallery" style="margin-top:1.5rem;">
         <div class="cs-image-hero">
-          <img src="images/downshift-hero.jpg" alt="Several screenshots show the website and mobile app of the Downshift.io product" loading="lazy">
+          <img src="images/cheesefactory-flow-full-fidelity.png" alt="Full-fidelity Cheese Factory mobile user flow: splash screen and sign in, branching to a home feed, idea detail, My Ideas and Profile, and a five-step idea submission flow ending in a success screen" loading="lazy">
         </div>
       </div>
     </div>
     <div class="cs-section">
-      <p class="cs-section-num">02 · Defining Our Users</p>
-      <h2 class="cs-section-title">Three Distinct User Groups</h2>
-      <p class="cs-body-text">One of the founders conducted the majority of the research, interviewing attendees, vehicle owners, and event organizers to gather insights into their experiences, needs, and pain points.</p>
-      <div class="cs-constraints-grid">
-        <div class="cs-constraint-card"><p class="cs-constraint-label">Attendees</p><p class="cs-constraint-desc">Had to apply through various disconnected sites to join events. No centralized platform for signing up for multiple meet-ups. No way to know if an event was full until arrival.</p></div>
-        <div class="cs-constraint-card"><p class="cs-constraint-label">Vehicle Owners</p><p class="cs-constraint-desc">Had to coordinate with organizers via email, phone, or in person to confirm space availability, complete sign-ups, and sign legal waivers. This was often time-consuming with tight deadlines.</p></div>
-        <div class="cs-constraint-card"><p class="cs-constraint-label">Event Coordinators</p><p class="cs-constraint-desc">Managed communications manually via emails, texts, and calls. Challenged to balance attendance, ensuring enough show up without overcrowding, while handling verification manually.</p></div>
+      <p class="cs-section-num">02 · The Problem</p>
+      <h2 class="cs-section-title">Ideas Don't Wait for a Desk</h2>
+      <p class="cs-body-text">The existing Cheese Factory platform was desktop-only, which meant capturing an idea depended on remembering it until the next time someone sat down at a computer. Good ideas are often prompted by something happening in the moment: on the floor, in a conversation, out in the field. That context gets lost by the time a team member is back at their desk.</p>
+      <blockquote class="cs-pullquote">
+        <p class="cs-pullquote-text">"Ideas don't always happen when one is at their desk, so we wanted to make sure that our team members have the opportunity to submit ideas whenever and wherever those ideas occur."</p>
+      </blockquote>
+    </div>
+    <div class="cs-section">
+      <p class="cs-section-num">03 · Approach</p>
+      <h2 class="cs-section-title">A Mobile Extension, Built in a Day</h2>
+      <p class="cs-body-text">Working within the constraints of a 24-hour internal hackathon, our team designed and built a mobile solution that extended the Cheese Factory's core idea-submission flow rather than reinventing it, giving team members a fast, low-friction way to capture an idea the moment it occurred, from wherever they were. We started by mapping the full flow at low fidelity to lock the structure early, then spent the rest of the day designing every screen at full fidelity so the prototype felt like a real, shippable product by the end of the event.</p>
+      <p class="cs-body-text" style="margin-top:1rem;">Porting the desktop workflow over as-is would have missed what mobile could actually offer, so we adapted it to take advantage of the device itself. The submission flow was reworked around quick access to the camera and photo library, letting someone snap a picture of whatever prompted the idea, an unkept area, a confusing sign, an area that could use improvement, and attach it on the spot rather than trying to describe it later from a desktop.</p>
+      <div class="cs-image-gallery" style="margin-top:1.5rem;">
+        <div class="cs-image-hero">
+          <img src="images/cheesefactory-flow-wireframe.png" alt="Early low-fidelity wireframe of the Cheese Factory mobile user flow, used to lock the screen structure before moving to full-fidelity design" loading="lazy">
+        </div>
       </div>
     </div>
     <div class="cs-section">
-      <p class="cs-section-num">03 · Competitive Analysis</p>
-      <h2 class="cs-section-title">Understanding the Landscape</h2>
-      <p class="cs-body-text">We focused on examining interactions across social media platforms, online event management websites, and document signing applications to identify existing standards and best practices.</p>
-      <div class="comp-table-wrap">
-        <table class="comp-table">
-          <thead><tr><th>Platform</th><th>Core Features</th><th>Key Strength</th><th>Key Weakness</th></tr></thead>
-          <tbody>
-            <tr><td>Facebook</td><td>News Feed, Groups, Pages, Events, Marketplace, Ads</td><td>Massive user base, robust ad tools</td><td>Declining appeal for younger users, cluttered interface</td></tr>
-            <tr><td>Instagram</td><td>Photo & video sharing, filters, Explore tab</td><td>High engagement, visual focus</td><td>Limited feature set beyond media sharing</td></tr>
-            <tr><td>Twitter</td><td>Microblogging, hashtags, trending topics, real-time updates</td><td>Real-time updates, trending content</td><td>User retention issues, spam/trolling</td></tr>
-            <tr><td>Snapchat</td><td>Ephemeral content, Stories, filters, AR lenses</td><td>Ephemeral content, youthful appeal</td><td>Poor discoverability, limited business tools</td></tr>
-            <tr><td>Pinterest</td><td>Pinning/boards, Buyable Pins, visual discovery</td><td>Visual inspiration, niche audience</td><td>Limited interactivity, narrow demographic appeal</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p class="cs-section-num">04 · The Flow</p>
+      <h2 class="cs-section-title">From Sign-In to Submission</h2>
+      <p class="cs-body-text">A branded splash screen covers the app while the session resolves, then hands off to sign-in. Company SSO is presented first, with email and password as a fallback. From there, users land on a home feed that acts as a hub: a search and filter bar up top, a scrollable list of ideas below, and a tab bar to everything else in the app. Tapping into an idea surfaces its full detail, status badge, and the ability to upvote or follow it, while the tab bar also branches out to My Ideas, a personal list with status badges tracking each submission through vetting, and a Profile screen for account and notification settings.</p>
+      <p class="cs-body-text" style="margin-top:1rem;">Submitting a new idea is a five-step flow opened from the tab bar's + button: pick a category, choose which business area the idea affects, write a title and description, optionally attach a photo, and review before sending it off. A success screen confirms the submission and routes it straight into My Ideas as Pending Review, so the idea is never lost in the moment it was captured.</p>
     </div>
     <div class="cs-section">
-      <p class="cs-section-num">04 · Key Features</p>
-      <h2 class="cs-section-title">Event Search & Virtual Garage</h2>
-      <h3 style="font-family:var(--font-display); font-size:1.375rem; font-weight:700; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.75rem;">Event Search & Details</h3>
-      <p class="cs-body-text">Streamlined participation for both attendees and vehicle owners through event discovery by location or interest, comprehensive event pages, ticket purchases, and seamless vehicle owner sign-ups including spot reservations and documentation.</p>
-      <div class="cs-image-gallery cs-image-gallery--compact" style="margin-top:1rem;">
+      <p class="cs-section-num">05 · Key Screens</p>
+      <h2 class="cs-section-title">Screen by Screen</h2>
+      <div class="cs-image-gallery cs-image-gallery--natural" style="margin-top:1rem;">
         <div class="cs-image-grid">
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-event-search.jpg" alt="Event search screen design" loading="lazy"></div>
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-event-details.jpg" alt="Event details screen design" loading="lazy"></div>
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-event-registration.jpg" alt="Event registration screen design" loading="lazy"></div>
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-event-ticketing.jpg" alt="Event ticketing screen design" loading="lazy"></div>
-        </div>
-      </div>
-      <h3 style="font-family:var(--font-display); font-size:1.375rem; font-weight:700; letter-spacing:-0.01em; color:var(--ink); margin-top:2rem; margin-bottom:0.75rem;">Virtual Garage</h3>
-      <p class="cs-body-text">A dedicated space for vehicle owners to showcase their cars through detailed profiles with photos, specs, and unique features; quick RSVP to events; and community engagement through likes and follows.</p>
-      <div class="cs-image-gallery cs-image-gallery--compact" style="margin-top:1rem;">
-        <div class="cs-image-grid">
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-garage-1.jpg" alt="Virtual garage feature design screen 1" loading="lazy"></div>
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-garage-2.jpg" alt="Virtual garage feature design screen 2" loading="lazy"></div>
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-garage-3.jpg" alt="Virtual garage feature design screen 3" loading="lazy"></div>
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-garage-4.jpg" alt="Virtual garage feature design screen 4" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/cheesefactory-splash.png" alt="Splash screen with the Cheese Factory logo and the line Got an idea? Let's hear it." loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/cheesefactory-sign-in.png" alt="Sign in screen with email and password fields and a Continue with SSO option" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/cheesefactory-home-feed.png" alt="Home feed with search bar, category filter chips, and a scrollable list of submitted ideas" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/cheesefactory-idea-detail.png" alt="Idea detail screen showing full description, upvote count, and Follow button" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/cheesefactory-my-ideas.png" alt="My Ideas screen listing a user's submitted ideas with status badges" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/cheesefactory-profile.png" alt="Profile screen with submission stats, notifications, and sign out" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/cheesefactory-submit-category.png" alt="Idea submission step 1: choosing a category such as Efficiency, Customer Experience, Technology, or Sustainability" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/cheesefactory-submit-area.png" alt="Idea submission step 2: selecting which business area the idea affects" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/cheesefactory-submit-idea.png" alt="Idea submission step 3: entering an idea title and description" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/cheesefactory-submit-photo.png" alt="Idea submission step 4: optional photo attachment" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/cheesefactory-submit-review.png" alt="Idea submission step 5: reviewing the idea before submitting" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/cheesefactory-success.png" alt="Success screen reading Into the wheel it goes! confirming the idea was submitted" loading="lazy"></div>
         </div>
       </div>
     </div>
     <div class="cs-section">
-      <p class="cs-section-num">05 · Outcome & Reflection</p>
-      <h2 class="cs-section-title">What We Learned</h2>
-      <p class="cs-body-text">The product was soft launched with just the virtual garage features, focusing on the social media aspect of the app. It wasn't received well. It didn't offer enough value over the social media platforms users were already using to show off their vehicles. Given funding challenges and other factors, it was decided not to continue the project.</p>
+      <p class="cs-section-num">06 · Outcome</p>
+      <h2 class="cs-section-title">From Hackathon Prototype to Shipped Feature</h2>
+      <p class="cs-body-text">The mobile Cheese Factory placed second at the internal hackathon. Beyond the event itself, the concept held up well enough that it was implemented for team members to use, giving the idea-submission process the mobile presence it was missing.</p>
       <div class="cs-outcome-box">
-        <p class="cs-outcome-title">Key Takeaway</p>
+        <p class="cs-outcome-title">Results</p>
         <ul class="cs-outcome-list">
-          <li><strong>Understanding market need:</strong> When developing a product that addresses a problem you're passionate about, it's essential to conduct thorough market research to identify which features should be prioritized for the initial release. The core value proposition (event management) needed to launch alongside the social features, not after.</li>
+          <li><strong>2nd place</strong> finish among the internal hackathon's submissions.</li>
+          <li><strong>Implemented</strong> for team members, taking idea submission beyond the 24-hour prototype.</li>
         </ul>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══════ CASE STUDY: MY APPRAISALS ═══════ -->
+<!-- ═══════ CASE STUDY: CHEESE FACTORY ═══════ -->
 </main>
 
 <!-- ═══════ LIGHTBOX ═══════ -->

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFQD566YZS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  var storedConsent;
+  try { storedConsent = localStorage.getItem('cookie-consent'); } catch (e) {}
+  gtag('consent', 'default', { analytics_storage: storedConsent === 'granted' ? 'granted' : 'denied' });
+  gtag('js', new Date());
+  gtag('config', 'G-MFQD566YZS');
+</script>
+<title>About — Chris Beard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-nav" href="#main-content">Skip to main content</a>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+  <a class="nav-logo" href="index.html">Chris Beard</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+    <span class="nav-toggle-bar"></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html" aria-current="page" class="nav-active">About</a></li>
+    <li><a href="photography.html">Photography</a></li>
+    <li><a href="resume.html">Résumé</a></li>
+    <li><a href="https://www.linkedin.com/in/beard02/" target="_blank" rel="noopener">LinkedIn</a></li>
+  </ul>
+  </div>
+</nav>
+
+<main id="main-content">
+
+  <!-- HERO -->
+  <section class="hero hero-with-portrait">
+    <div>
+      <p class="hero-eyebrow animate-in">About Me</p>
+      <h1 class="hero-h1 animate-in delay-1">I'm Chris a Product Designer <em>and problem solver</em>.</h1>
+      <p class="hero-sub animate-in delay-2">I'm based in Detroit, MI, with 10+ years designing for mortgage tech, fintech, and real estate. Outside of work I'm usually behind a camera, renovating my house one room at a time, or reading; I average 250+ chapters a month between manhua and books.</p>
+      <div class="hero-actions animate-in delay-3">
+        <a class="btn-ghost" href="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/69a52b93fa507fe3a2e2536a_Chris_Beard_Public_Resume.pdf" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 14h12M8 2v8M4 7l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download Résumé
+        </a>
+        <div class="hero-social-links">
+          <a class="social-link" href="https://www.linkedin.com/in/beard02/" target="_blank" rel="noopener" title="LinkedIn">in</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-portrait animate-in delay-1">
+      <img src="images/Sketch_Portrait.png" alt="Hand-drawn sketch portrait of Chris Beard smiling, standing in an office space" loading="lazy">
+    </div>
+  </section>
+
+  <!-- QUICK FACTS -->
+  <div class="metrics-strip">
+    <div class="metrics-inner">
+      <div class="metric-item">
+        <span class="metric-num">10+</span>
+        <span class="metric-label">Years in UX &amp; Product Design</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-num">1927</span>
+        <span class="metric-label">Bungalow mid-renovation</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-num">250+</span>
+        <span class="metric-label">Chapters read a month</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-num">Detroit, MI</span>
+        <span class="metric-label">Home base</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OUTSIDE OF DESIGN -->
+  <section class="bento-section">
+    <h2 class="section-label">Outside of Design</h2>
+    <div class="bento-grid">
+
+      <article class="card case-card-med" onclick="location.href='photography.html'" tabindex="0" role="button" aria-label="Visit my Photography page">
+        <div class="case-card-inner">
+          <div class="card-thumb">
+            <img src="images/photography/thumbs/book-tower-day.jpg" alt="The Book Tower rising above buildings in downtown Detroit" loading="lazy">
+          </div>
+          <h2 class="card-thesis">Photography</h2>
+          <p class="card-summary">When I'm not designing products, I'm walking around Detroit with a camera, noticing light and structure for their own sake, no user story attached.</p>
+          <div class="card-cta">See the collection <span class="card-cta-arrow">→</span></div>
+        </div>
+      </article>
+
+      <article class="card case-card-med" onclick="location.href='renovation.html'" tabindex="0" role="button" aria-label="Visit my Renovation page">
+        <div class="case-card-inner">
+          <div class="card-thumb">
+            <img src="images/renovation/thumbs/house-sketch.jpg" alt="Hand-drawn front elevation study of the house, showing the porch, dormer, and picket fence details" loading="lazy">
+          </div>
+          <h2 class="card-thesis">DIY Home Renovation</h2>
+          <p class="card-summary">A running log of gutting and rebuilding my 1927 bungalow: framing, electrical, and plumbing, learned by doing.</p>
+          <div class="card-cta">See the progress <span class="card-cta-arrow">→</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+    <!-- BOOKS I'VE READ -->
+  <section class="bento-section books-section" id="books">
+    <h2 class="section-label">Books I've Read</h2>
+    <div class="book-carousel-wrap">
+      <button class="book-carousel-btn book-carousel-prev" type="button" aria-label="Scroll to previous books">‹</button>
+      <div class="book-carousel" id="book-carousel" tabindex="0" aria-label="Carousel of books I've read">
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Measuring+the+User+Experience+Bill+Albert+Tom+Tullis" target="_blank" rel="noopener" aria-label="View Measuring the User Experience on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/10262965-L.jpg" alt="Cover of Measuring the User Experience" loading="lazy"></div>
+          <p class="book-title">Measuring the User Experience</p>
+          <p class="book-author">Bill Albert &amp; Tom Tullis</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Don%27t+Make+Me+Think+Revisited+Steve+Krug" target="_blank" rel="noopener" aria-label="View Don't Make Me Think, Revisited on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/10329409-L.jpg" alt="Cover of Don't Make Me Think, Revisited" loading="lazy"></div>
+          <p class="book-title">Don't Make Me Think, Revisited</p>
+          <p class="book-author">Steve Krug</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Usable+Usability+Eric+Reiss" target="_blank" rel="noopener" aria-label="View Usable Usability on Amazon">
+          <div class="book-cover">
+            <div class="book-cover-placeholder">
+              <p class="book-cover-placeholder-title">Usable Usability</p>
+              <p class="book-cover-placeholder-author">Eric Reiss</p>
+            </div>
+          </div>
+          <p class="book-title">Usable Usability</p>
+          <p class="book-author">Eric Reiss</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Interviewing+Users+Steve+Portigal" target="_blank" rel="noopener" aria-label="View Interviewing Users on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/8778372-L.jpg" alt="Cover of Interviewing Users" loading="lazy"></div>
+          <p class="book-title">Interviewing Users</p>
+          <p class="book-author">Steve Portigal</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=100+Things+Every+Designer+Needs+to+Know+About+People+Susan+Weinschenk" target="_blank" rel="noopener" aria-label="View 100 Things Every Designer Needs to Know About People on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/8727716-L.jpg" alt="Cover of 100 Things Every Designer Needs to Know About People" loading="lazy"></div>
+          <p class="book-title">100 Things Every Designer Needs to Know About People</p>
+          <p class="book-author">Susan Weinschenk, Ph.D.</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Pragmatic+Thinking+and+Learning+Andy+Hunt" target="_blank" rel="noopener" aria-label="View Pragmatic Thinking and Learning on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/5547404-L.jpg" alt="Cover of Pragmatic Thinking and Learning" loading="lazy"></div>
+          <p class="book-title">Pragmatic Thinking and Learning</p>
+          <p class="book-author">Andy Hunt</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Making+It+Right+Rian+van+der+Merwe" target="_blank" rel="noopener" aria-label="View Making It Right on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/11560000-L.jpg" alt="Cover of Making It Right" loading="lazy"></div>
+          <p class="book-title">Making It Right</p>
+          <p class="book-author">Rian van der Merwe</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Thinkertoys+Michael+Michalko" target="_blank" rel="noopener" aria-label="View Thinkertoys on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/697245-L.jpg" alt="Cover of Thinkertoys" loading="lazy"></div>
+          <p class="book-title">Thinkertoys</p>
+          <p class="book-author">Michael Michalko</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=The+Design+of+Everyday+Things+Don+Norman" target="_blank" rel="noopener" aria-label="View The Design of Everyday Things on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/14428212-L.jpg" alt="Cover of The Design of Everyday Things" loading="lazy"></div>
+          <p class="book-title">The Design of Everyday Things</p>
+          <p class="book-author">Don Norman</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Design+for+the+Real+World+Victor+Papanek" target="_blank" rel="noopener" aria-label="View Design for the Real World on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/13011269-L.jpg" alt="Cover of Design for the Real World" loading="lazy"></div>
+          <p class="book-title">Design for the Real World</p>
+          <p class="book-author">Victor Papanek</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Sprint+Jake+Knapp+John+Zeratsky" target="_blank" rel="noopener" aria-label="View Sprint on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/7431269-L.jpg" alt="Cover of Sprint" loading="lazy"></div>
+          <p class="book-title">Sprint</p>
+          <p class="book-author">Jake Knapp &amp; John Zeratsky</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Mismatch+Kat+Holmes" target="_blank" rel="noopener" aria-label="View Mismatch on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/8835420-L.jpg" alt="Cover of Mismatch" loading="lazy"></div>
+          <p class="book-title">Mismatch</p>
+          <p class="book-author">Kat Holmes</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Change+by+Design+Tim+Brown" target="_blank" rel="noopener" aria-label="View Change by Design on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/6305705-L.jpg" alt="Cover of Change by Design" loading="lazy"></div>
+          <p class="book-title">Change by Design</p>
+          <p class="book-author">Tim Brown</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=97+Things+Every+UX+Practitioner+Should+Know+Daniel+Berlin" target="_blank" rel="noopener" aria-label="View 97 Things Every UX Practitioner Should Know on Amazon">
+          <div class="book-cover">
+            <div class="book-cover-placeholder">
+              <p class="book-cover-placeholder-title">97 Things Every UX Practitioner Should Know</p>
+              <p class="book-cover-placeholder-author">Daniel Berlin</p>
+            </div>
+          </div>
+          <p class="book-title">97 Things Every UX Practitioner Should Know</p>
+          <p class="book-author">Daniel Berlin</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Atomic+Habits+James+Clear" target="_blank" rel="noopener" aria-label="View Atomic Habits on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/12539702-L.jpg" alt="Cover of Atomic Habits" loading="lazy"></div>
+          <p class="book-title">Atomic Habits</p>
+          <p class="book-author">James Clear</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Bottlenecks+David+C+Evans" target="_blank" rel="noopener" aria-label="View Bottlenecks on Amazon">
+          <div class="book-cover">
+            <div class="book-cover-placeholder">
+              <p class="book-cover-placeholder-title">Bottlenecks</p>
+              <p class="book-cover-placeholder-author">David C. Evans</p>
+            </div>
+          </div>
+          <p class="book-title">Bottlenecks</p>
+          <p class="book-author">David C. Evans</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=uxGPT+Patrick+Neeman" target="_blank" rel="noopener" aria-label="View uxGPT on Amazon">
+          <div class="book-cover">
+            <div class="book-cover-placeholder">
+              <p class="book-cover-placeholder-title">uxGPT</p>
+              <p class="book-cover-placeholder-author">Patrick Neeman</p>
+            </div>
+          </div>
+          <p class="book-title">uxGPT</p>
+          <p class="book-author">Patrick Neeman</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=The+Five+Dysfunctions+of+a+Team+Patrick+Lencioni" target="_blank" rel="noopener" aria-label="View The Five Dysfunctions of a Team on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/13296514-L.jpg" alt="Cover of The Five Dysfunctions of a Team" loading="lazy"></div>
+          <p class="book-title">The Five Dysfunctions of a Team</p>
+          <p class="book-author">Patrick M. Lencioni</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=HBR%27s+10+Must+Reads+on+Emotional+Intelligence+Daniel+Goleman" target="_blank" rel="noopener" aria-label="View HBR's 10 Must Reads on Emotional Intelligence on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/8920949-L.jpg" alt="Cover of HBR's 10 Must Reads on Emotional Intelligence" loading="lazy"></div>
+          <p class="book-title">HBR's 10 Must Reads on Emotional Intelligence</p>
+          <p class="book-author">Harvard Business Review &amp; Daniel Goleman</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Technically+Wrong+Sara+Wachter-Boettcher" target="_blank" rel="noopener" aria-label="View Technically Wrong on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/8353132-L.jpg" alt="Cover of Technically Wrong" loading="lazy"></div>
+          <p class="book-title">Technically Wrong</p>
+          <p class="book-author">Sara Wachter-Boettcher</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Failed+It+Erik+Kessels" target="_blank" rel="noopener" aria-label="View Failed It! on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/8494494-L.jpg" alt="Cover of Failed It!" loading="lazy"></div>
+          <p class="book-title">Failed It!</p>
+          <p class="book-author">Erik Kessels</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=How+to+Make+Sense+of+Any+Mess+Abby+Covert" target="_blank" rel="noopener" aria-label="View How to Make Sense of Any Mess on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/7352417-L.jpg" alt="Cover of How to Make Sense of Any Mess" loading="lazy"></div>
+          <p class="book-title">How to Make Sense of Any Mess</p>
+          <p class="book-author">Abby Covert</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Lean+UX+Jeff+Gothelf+Josh+Seiden" target="_blank" rel="noopener" aria-label="View Lean UX on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/7534763-L.jpg" alt="Cover of Lean UX" loading="lazy"></div>
+          <p class="book-title">Lean UX</p>
+          <p class="book-author">Jeff Gothelf &amp; Josh Seiden</p>
+        </a>
+
+        <a class="book-card" href="https://www.amazon.com/s?k=Zen+and+the+Art+of+Motorcycle+Maintenance+Robert+Pirsig" target="_blank" rel="noopener" aria-label="View Zen and the Art of Motorcycle Maintenance on Amazon">
+          <div class="book-cover"><img src="https://covers.openlibrary.org/b/id/10673266-L.jpg" alt="Cover of Zen and the Art of Motorcycle Maintenance" loading="lazy"></div>
+          <p class="book-title">Zen and the Art of Motorcycle Maintenance</p>
+          <p class="book-author">Robert M. Pirsig</p>
+        </a>
+
+      </div>
+      <button class="book-carousel-btn book-carousel-next" type="button" aria-label="Scroll to next books">›</button>
+    </div>
+  </section>
+
+  <!--div class="quote-strip">
+    <p class="quote-text">"Good design is invisible until it's missing; that's usually where I start."</p>
+    <p class="quote-attr">My approach to every project</p>
+  </div -->
+
+</main>
+<footer aria-label="Site footer">
+  <div class="footer-inner">
+    <span class="footer-copy">© 2025 Chris Beard · UX Detroit</span>
+    <a class="footer-link" href="privacy.html">Privacy Policy</a>
+    <button class="footer-link cookie-prefs-link" type="button">Cookie Preferences</button>
+    <a class="footer-link" href="https://www.linkedin.com/in/beard02/" target="_blank" rel="noopener">LinkedIn →</a>
+  </div>
+</footer>
+<div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie consent" hidden>
+  <p class="cookie-banner-title">Cookie Settings</p>
+  <p class="cookie-banner-text">We use Google Analytics to understand how visitors use this site. Nothing is tracked until you accept, and you can change your choice anytime via "Cookie Preferences" in the footer.</p>
+  <a class="cookie-banner-link" href="privacy.html">See our Privacy Policy</a>
+  <div class="cookie-banner-actions">
+    <button id="cookie-decline" class="cookie-btn" type="button">Decline</button>
+    <button id="cookie-accept" class="cookie-btn cookie-btn-accept" type="button">Accept</button>
+  </div>
+</div>
+<script>
+// ── BOOK CAROUSEL ────────────────────────────────────────────────────────────
+(function () {
+  var track = document.getElementById('book-carousel');
+  var prevBtn = document.querySelector('.book-carousel-prev');
+  var nextBtn = document.querySelector('.book-carousel-next');
+  if (!track || !prevBtn || !nextBtn) return;
+
+  function scrollByCard(dir) {
+    var card = track.querySelector('.book-card');
+    var step = card ? card.getBoundingClientRect().width + 24 : 174;
+    track.scrollBy({ left: dir * step * 2, behavior: 'smooth' });
+  }
+
+  function updateButtons() {
+    var max = track.scrollWidth - track.clientWidth - 1;
+    prevBtn.disabled = track.scrollLeft <= 0;
+    nextBtn.disabled = track.scrollLeft >= max;
+  }
+
+  prevBtn.addEventListener('click', function () { scrollByCard(-1); });
+  nextBtn.addEventListener('click', function () { scrollByCard(1); });
+  track.addEventListener('scroll', updateButtons, { passive: true });
+  window.addEventListener('resize', updateButtons);
+  updateButtons();
+
+  // Keyboard arrow support
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { scrollByCard(1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft') { scrollByCard(-1); e.preventDefault(); }
+  });
+
+  // Vertical wheel scrolls the carousel horizontally
+  track.addEventListener('wheel', function (e) {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      track.scrollLeft += e.deltaY;
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  // Click-and-drag (mouse only — touch already scrolls natively via touch-action)
+  var isDown = false, isDragging = false, startX = 0, startScroll = 0;
+
+  // Book cover images are draggable by default, which hijacks the pointer
+  // sequence with a native ghost-image drag — block it so our scroll-drag wins.
+  track.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+  track.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'mouse') return;
+    isDown = true;
+    isDragging = false;
+    startX = e.clientX;
+    startScroll = track.scrollLeft;
+  });
+
+  track.addEventListener('pointermove', function (e) {
+    if (!isDown) return;
+    var dx = e.clientX - startX;
+    if (!isDragging && Math.abs(dx) > 4) {
+      isDragging = true;
+      track.classList.add('is-dragging');
+      track.setPointerCapture(e.pointerId);
+    }
+    if (isDragging) {
+      track.scrollLeft = startScroll - dx;
+      e.preventDefault();
+    }
+  });
+
+  function endDrag() {
+    if (!isDown) return;
+    isDown = false;
+    track.classList.remove('is-dragging');
+    // Defer clearing so the trailing click event (if any) can still see it was a drag
+    setTimeout(function () { isDragging = false; }, 0);
+  }
+  track.addEventListener('pointerup', endDrag);
+  track.addEventListener('pointercancel', endDrag);
+  track.addEventListener('pointerleave', function () { if (isDown && !isDragging) endDrag(); });
+
+  // Suppress the click-through to a book link at the end of a drag
+  track.addEventListener('click', function (e) {
+    if (isDragging) { e.preventDefault(); e.stopPropagation(); }
+  }, true);
+})();
+</script>
+<script src="nav.js"></script>
+<script src="consent.js"></script>
+</body>
+</html>

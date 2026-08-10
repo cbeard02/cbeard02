@@ -171,6 +171,10 @@
     padding: 0.4rem 0.75rem; border-radius: var(--radius);
   }
   .btn-ghost:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-2-light); border-radius: var(--radius); }
+  .hero-with-portrait { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
+  .hero-with-portrait .hero-actions { margin-bottom: 0; }
+  .hero-portrait { width: 100%; aspect-ratio: 3 / 4; border-radius: var(--radius-lg); overflow: hidden; }
+  .hero-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1); }
   .hero-social-links { display: flex; gap: 1rem; align-items: center; }
   .social-link {
     width: 36px; height: 36px; border: 1px solid var(--border-strong);
@@ -275,6 +279,50 @@
   .pillar-name { font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin-bottom: 0.35rem; }
   .pillar-desc { font-size: 0.9375rem; color: var(--ink-3); line-height: 1.6; }
 
+  /* ── BOOK CAROUSEL ── */
+  .books-section { padding-top: 0; }
+  .book-carousel-wrap { position: relative; display: flex; align-items: center; gap: 0.75rem; }
+  .book-carousel {
+    display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x proximity;
+    padding: 0.25rem 0.25rem 1rem; scrollbar-width: none;
+    cursor: grab; touch-action: pan-x; -webkit-user-select: none; user-select: none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 20px, black calc(100% - 20px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, black 20px, black calc(100% - 20px), transparent 100%);
+  }
+  .book-carousel::-webkit-scrollbar { display: none; }
+  .book-carousel.is-dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+  .book-carousel.is-dragging .book-card { pointer-events: none; }
+  .book-card { flex: 0 0 150px; scroll-snap-align: start; display: block; color: inherit; text-decoration: none; }
+  .book-card:hover .book-title { color: var(--accent); }
+  .book-cover {
+    width: 150px; height: 225px; border-radius: var(--radius); overflow: hidden;
+    border: 1px solid var(--border); background: var(--bg-warm);
+    box-shadow: 0 1px 2px rgba(5,5,6,0.06); transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .book-card:hover .book-cover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(5,5,6,0.12); }
+  .book-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .book-cover-placeholder {
+    width: 100%; height: 100%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    background: var(--accent-2-light); padding: 1rem; gap: 0.5rem;
+  }
+  .book-cover-placeholder-title { font-family: var(--font-display); font-size: 0.8125rem; font-weight: 600; color: var(--heading); line-height: 1.3; }
+  .book-cover-placeholder-author { font-family: var(--font-mono); font-size: 0.6875rem; color: var(--ink-2); }
+  .book-title { font-size: 0.8125rem; font-weight: 600; color: var(--ink); margin-top: 0.75rem; line-height: 1.35; }
+  .book-author { font-size: 0.75rem; color: var(--ink-3); margin-top: 0.15rem; }
+  .book-carousel-btn {
+    flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid var(--border-strong); background: var(--bg-card); color: var(--ink);
+    font-size: 1.25rem; line-height: 1; cursor: pointer; display: flex;
+    align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(5,5,6,0.08);
+    transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
+  }
+  .book-carousel-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 18px rgba(27,79,138,0.28); }
+  .book-carousel-btn:active { transform: translateY(0) scale(0.92); box-shadow: 0 1px 3px rgba(5,5,6,0.08); }
+  .book-carousel-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .book-carousel-btn:disabled { opacity: 0.35; cursor: default; transform: none; box-shadow: none; }
+  .book-carousel-btn:disabled:hover { background: var(--bg-card); border-color: var(--border-strong); color: var(--ink); transform: none; box-shadow: none; }
+
   /* ── QUOTE STRIP ── */
   .quote-strip { background: var(--bg-dark); padding: 3.5rem 2.5rem; text-align: center; }
   .quote-text {
@@ -310,6 +358,35 @@
   .photo-quote { max-width: 1000px; margin: 0 auto; padding: 5rem 2.5rem; text-align: center; }
   .photo-quote-text { font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 600; letter-spacing: -0.01em; color: var(--heading); line-height: 1.5; margin-bottom: 1rem; }
   .photo-quote-attr { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
+
+  /* ── HOUSE RENOVATION PAGE ── */
+  /* Boxed, rounded hero image with the headline overlaid at the bottom, scrimmed for legibility. */
+  .house-hero-wrap { max-width: 1200px; margin: 0 auto; padding: 2.5rem 2.5rem 0; }
+  .house-back { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9375rem; font-weight: 600; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; margin: 0 0 1.5rem -0.65rem; padding: 0.35rem 0.65rem; border-radius: var(--radius); transition: color var(--transition), background var(--transition); }
+  .house-back:hover { color: var(--accent); background: var(--bg-warm); }
+  .house-hero { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 40px; overflow: hidden; margin-bottom: 3.5rem; }
+  .house-hero-media { position: absolute; inset: 0; }
+  .house-hero-media img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1); }
+  /* Dense through the bottom slice where the (now short) text sits, fading out quickly so more of the image reads clearly above it. */
+  .house-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,10,14,0.92) 0%, rgba(8,10,14,0.8) 30%, rgba(8,10,14,0.3) 45%, rgba(8,10,14,0) 60%); pointer-events: none; }
+  .house-hero-text { position: relative; z-index: 1; height: 100%; padding: 2.5rem 2.5rem 3rem; display: flex; flex-direction: column; justify-content: flex-end; }
+  .house-hero-text .hero-eyebrow { color: rgba(255,255,255,0.75); }
+  .house-hero-text .hero-eyebrow::before { background: #63a6e9; }
+  .house-hero-text .hero-h1 { font-size: clamp(2.25rem, 4.5vw, 4rem); color: #fff; max-width: 760px; margin-bottom: 0; }
+  .house-stats.metrics-strip { background: none; }
+  .house-stats .metrics-inner { grid-template-columns: repeat(3, 1fr); gap: 4rem; }
+  .house-stats .metric-item { text-align: left; }
+  .house-stats .metric-num { color: var(--heading); }
+  .house-gallery { padding: 4rem 2.5rem; max-width: 1200px; margin: 0 auto; }
+  .house-gallery-sub { color: var(--ink-2); font-size: 1rem; line-height: 1.6; margin: 0.5rem 0 2.5rem; }
+  .house-gallery-sub p { margin-bottom: 1rem; }
+  .house-gallery-sub p:last-child { margin-bottom: 0; }
+  .house-image-grid { grid-template-columns: repeat(3, 1fr); }
+  .house-image-grid .cs-img-card { aspect-ratio: 3 / 2; border: none; background: none; }
+  .house-image-grid .cs-img-card img { width: 100%; height: 100%; object-fit: cover; }
+  .house-quote { max-width: 1000px; margin: 0 auto; padding: 5rem 2.5rem; text-align: center; }
+  .house-quote-text { font-family: var(--font-display); font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 600; letter-spacing: -0.01em; color: var(--heading); line-height: 1.5; margin-bottom: 1rem; }
+  .house-quote-attr { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); }
 
   /* ── WORK INDEX PAGE ── */
   .work-header { padding: 4rem 2.5rem 2rem; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
@@ -413,7 +490,13 @@
   .cs-image-gallery--compact .cs-image-grid { grid-template-columns: repeat(4, 1fr); }
   .cs-image-gallery--compact .cs-img-card { aspect-ratio: 9 / 16; }
   .cs-image-gallery--compact .cs-img-card img { width: 100%; height: 100%; object-fit: cover; }
+  .cs-image-gallery--natural .cs-image-grid { grid-template-columns: repeat(4, 1fr); }
+  .cs-image-gallery--natural .cs-img-card { background: none; border: none; }
+  .cs-image-gallery--natural .cs-img-card img { height: auto; }
   .cs-img-label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); padding: 0.6rem 0.75rem; background: var(--bg-warm); border-top: 1px solid var(--border); }
+  .cs-image-gallery--thirds .cs-image-grid { grid-template-columns: repeat(3, 1fr); }
+  .cs-image-gallery--thirds .cs-img-card { height: 300px; display: flex; align-items: center; justify-content: center; }
+  .cs-image-gallery--thirds .cs-img-card img { width: 100%; height: 100%; object-fit: cover; }
 
   /* ── SEVERITY MATRIX ── */
   .severity-matrix { margin-top: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
@@ -547,9 +630,17 @@
     .footer-inner { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
     .photo-hero { grid-template-columns: 1fr; padding: 2.5rem 1.25rem 1.5rem; gap: 2rem; }
     .photo-hero-media { max-width: 420px; margin: 0 auto; }
+    .hero-with-portrait { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-with-portrait .hero-portrait { max-width: 320px; margin: 0 auto; order: -1; }
     .photo-stats .metrics-inner { grid-template-columns: 1fr; gap: 1.25rem; }
     .photo-gallery { padding: 2.5rem 1.25rem; }
     .photo-image-grid { grid-template-columns: repeat(2, 1fr); }
+    .house-hero-wrap { padding: 1.5rem 1.25rem 0; }
+    .house-hero { border-radius: 24px; aspect-ratio: 4 / 3; margin-bottom: 2.5rem; }
+    .house-hero-text { padding: 1.5rem 1.25rem 2rem; }
+    .house-stats .metrics-inner { grid-template-columns: 1fr; gap: 1.25rem; }
+    .house-gallery { padding: 2.5rem 1.25rem; }
+    .house-image-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
     .hero-h1 { font-size: 2.25rem; }
@@ -574,7 +665,10 @@
     .nav-links a { display: block; padding: 0.85rem 0; }
     .cs-image-grid { grid-template-columns: 1fr; }
     .cs-image-gallery--compact .cs-image-grid { grid-template-columns: repeat(2, 1fr); }
+    .cs-image-gallery--natural .cs-image-grid { grid-template-columns: repeat(2, 1fr); }
     .photo-image-grid { grid-template-columns: 1fr; }
+    .house-image-grid { grid-template-columns: 1fr; }
+    .cs-image-gallery--thirds .cs-image-grid { grid-template-columns: 1fr; }
   }
 
   /* ── LIGHTBOX ── */

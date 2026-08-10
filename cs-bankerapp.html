@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -14,7 +14,7 @@
   gtag('js', new Date());
   gtag('config', 'G-MFQD566YZS');
 </script>
-<title>Downshift.io — Chris Beard</title>
+<title>Banker App — Chris Beard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -43,96 +43,93 @@
   </div>
 </nav>
 
+<!--
+  NOTE: This page is intentionally not linked from work.html or the nav.
+  Written content is based on the original myportfolio.com write-up plus the
+  interactive Hi-Fi prototype source (screens, copy, states). Outcome/placement
+  data was not available in either source, so the Outcome section is written
+  conservatively without unverified claims.
+-->
+
 <main id="main-content">
 <div class="cs-hero">
     <div class="cs-hero-inner">
       <a class="cs-back" href="work.html">← Back to Work</a>
-      <p class="cs-co-label">Downshift.io · UX Designer · 2015–2016</p>
-      <h1 class="cs-h1">Streamlining Automotive Event Management Through a Dual-Purpose Social Platform</h1>
+      <p class="cs-co-label">Banker App · UX Designer · Quicken Loans HackIT — The Hack Strikes Back</p>
+      <h1 class="cs-h1">A Mobile Home Base for Mortgage Bankers Managing Every Client and Document</h1>
       <div class="cs-metrics-row">
-        <div class="cs-metric-box"><span class="cs-metric-num">3</span><span class="cs-metric-label">Distinct user groups defined</span></div>
-        <div class="cs-metric-box"><span class="cs-metric-num">MVP</span><span class="cs-metric-label">Soft launch completed</span></div>
-        <div class="cs-metric-box"><span class="cs-metric-num">Social</span><span class="cs-metric-label">+ Event platform combined</span></div>
+        <div class="cs-metric-box"><span class="cs-metric-num">24</span><span class="cs-metric-label">Hour build sprint</span></div>
+        <div class="cs-metric-box"><span class="cs-metric-num">5</span><span class="cs-metric-label">Core screens: splash, sign in, list, detail, notifications</span></div>
+        <div class="cs-metric-box"><span class="cs-metric-num">4</span><span class="cs-metric-label">Document states tracked per client</span></div>
       </div>
     </div>
   </div>
   <div class="cs-body">
     <div class="cs-section">
       <p class="cs-section-num">01 · Overview</p>
-      <h2 class="cs-section-title">About Downshift</h2>
-      <p class="cs-body-text">Downshift was a social media startup built around automotive meetups. Its goal was to create an easy way for attendees and car owners to register for events, while giving the community the ability to like, follow, and view their favorite vehicles. I was brought in to create the initial MVP design for the platform, collaborating closely with founders to identify user roles, workflows, and the key features needed to serve three distinct user groups.</p>
+      <h2 class="cs-section-title">About the Banker App</h2>
+      <p class="cs-body-text">The Banker App was built to give mortgage bankers the ability to manage their loans on the go. Documents were the number one issue plaguing bankers day to day, since most of the loan process revolves around collecting the right paperwork from clients to keep a loan moving through underwriting. During HackIT — The Hack Strikes Back, Quicken Loans' Star Wars–themed hackathon held as part of Bullet Time, the company's dedicated innovation time, our team set out to build a mobile tool that put document status front and center, so a banker could see exactly what was missing and from whom, and follow up without being tied to a desk.</p>
       <div class="cs-image-gallery" style="margin-top:1.5rem;">
         <div class="cs-image-hero">
-          <img src="images/downshift-hero.jpg" alt="Several screenshots show the website and mobile app of the Downshift.io product" loading="lazy">
+          <img src="images/bankerapp-flow-hifi.png" alt="Banker App full-fidelity user flow: splash screen and sign in leading into a client list, branching to client detail, notifications, send-reminder, and contact-action states" loading="lazy">
         </div>
       </div>
     </div>
     <div class="cs-section">
-      <p class="cs-section-num">02 · Defining Our Users</p>
-      <h2 class="cs-section-title">Three Distinct User Groups</h2>
-      <p class="cs-body-text">One of the founders conducted the majority of the research, interviewing attendees, vehicle owners, and event organizers to gather insights into their experiences, needs, and pain points.</p>
-      <div class="cs-constraints-grid">
-        <div class="cs-constraint-card"><p class="cs-constraint-label">Attendees</p><p class="cs-constraint-desc">Had to apply through various disconnected sites to join events. No centralized platform for signing up for multiple meet-ups. No way to know if an event was full until arrival.</p></div>
-        <div class="cs-constraint-card"><p class="cs-constraint-label">Vehicle Owners</p><p class="cs-constraint-desc">Had to coordinate with organizers via email, phone, or in person to confirm space availability, complete sign-ups, and sign legal waivers. This was often time-consuming with tight deadlines.</p></div>
-        <div class="cs-constraint-card"><p class="cs-constraint-label">Event Coordinators</p><p class="cs-constraint-desc">Managed communications manually via emails, texts, and calls. Challenged to balance attendance, ensuring enough show up without overcrowding, while handling verification manually.</p></div>
-      </div>
+      <p class="cs-section-num">02 · The Problem</p>
+      <h2 class="cs-section-title">A Dozen Deals, No Single View</h2>
+      <p class="cs-body-text">A banker's active client list is really a dozen small projects running in parallel, each with its own loan type, closing date, and document checklist. Without one place to see whose paperwork is stalled and who's ready to close, that tracking tends to live in scattered inboxes, calls, and memory, which makes it easy for a document sitting untouched to go unnoticed until it threatens a closing date.</p>
     </div>
     <div class="cs-section">
-      <p class="cs-section-num">03 · Competitive Analysis</p>
-      <h2 class="cs-section-title">Understanding the Landscape</h2>
-      <p class="cs-body-text">We focused on examining interactions across social media platforms, online event management websites, and document signing applications to identify existing standards and best practices.</p>
-      <div class="comp-table-wrap">
-        <table class="comp-table">
-          <thead><tr><th>Platform</th><th>Core Features</th><th>Key Strength</th><th>Key Weakness</th></tr></thead>
-          <tbody>
-            <tr><td>Facebook</td><td>News Feed, Groups, Pages, Events, Marketplace, Ads</td><td>Massive user base, robust ad tools</td><td>Declining appeal for younger users, cluttered interface</td></tr>
-            <tr><td>Instagram</td><td>Photo & video sharing, filters, Explore tab</td><td>High engagement, visual focus</td><td>Limited feature set beyond media sharing</td></tr>
-            <tr><td>Twitter</td><td>Microblogging, hashtags, trending topics, real-time updates</td><td>Real-time updates, trending content</td><td>User retention issues, spam/trolling</td></tr>
-            <tr><td>Snapchat</td><td>Ephemeral content, Stories, filters, AR lenses</td><td>Ephemeral content, youthful appeal</td><td>Poor discoverability, limited business tools</td></tr>
-            <tr><td>Pinterest</td><td>Pinning/boards, Buyable Pins, visual discovery</td><td>Visual inspiration, niche audience</td><td>Limited interactivity, narrow demographic appeal</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p class="cs-section-num">03 · Approach & Flow</p>
+      <h2 class="cs-section-title">Status at a Glance, Action in One Tap</h2>
+      <p class="cs-body-text">Working within HackIT's 24-hour window, our team designed the app around a single question a banker asks constantly: which of my clients need something from me right now? Every client card on the home list rolls up its documents into one status badge, so a banker can scan the whole book of business and immediately see who's waiting on a signature versus who's ready to close, without opening a single record.</p>
+      <p class="cs-body-text" style="margin-top:1rem;">A branded splash screen covers the app while the session resolves, auto-advancing to sign-in after a couple of seconds or on tap, with email/password and Touch ID as a fast-path fallback. From there, bankers land on My Clients: a search field, a row of draggable status filter chips (All, Action Needed, In Review, Awaiting Review, Complete), and the scrollable list of status-badged client cards.</p>
+      <p class="cs-body-text" style="margin-top:1rem;">Tapping into a client surfaces a detail view built for follow-through rather than just review: contact info, one-tap Call, Text, and Email actions each with a confirmation toast, and a document checklist where every item carries its own color-coded status pill (Not Sent, Viewed, Uploaded, Signed). Any document still at Not Sent shows a Send Reminder action that nudges the client and updates the status live, so closing the loop on a stalled document takes one tap instead of a separate outreach step. A tab bar reaches Notifications, a feed of status-change updates with an unread indicator; tapping a notification opens straight into that client's detail so a status change is never more than one tap from action.</p>
     </div>
     <div class="cs-section">
-      <p class="cs-section-num">04 · Key Features</p>
-      <h2 class="cs-section-title">Event Search & Virtual Garage</h2>
-      <h3 style="font-family:var(--font-display); font-size:1.375rem; font-weight:700; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.75rem;">Event Search & Details</h3>
-      <p class="cs-body-text">Streamlined participation for both attendees and vehicle owners through event discovery by location or interest, comprehensive event pages, ticket purchases, and seamless vehicle owner sign-ups including spot reservations and documentation.</p>
-      <div class="cs-image-gallery cs-image-gallery--compact" style="margin-top:1rem;">
+      <p class="cs-section-num">04 · Key Screens</p>
+      <h2 class="cs-section-title">Screen by Screen</h2>
+      <div class="cs-image-gallery cs-image-gallery--natural" style="margin-top:1rem;">
         <div class="cs-image-grid">
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-event-search.jpg" alt="Event search screen design" loading="lazy"></div>
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-event-details.jpg" alt="Event details screen design" loading="lazy"></div>
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-event-registration.jpg" alt="Event registration screen design" loading="lazy"></div>
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-event-ticketing.jpg" alt="Event ticketing screen design" loading="lazy"></div>
-        </div>
-      </div>
-      <h3 style="font-family:var(--font-display); font-size:1.375rem; font-weight:700; letter-spacing:-0.01em; color:var(--ink); margin-top:2rem; margin-bottom:0.75rem;">Virtual Garage</h3>
-      <p class="cs-body-text">A dedicated space for vehicle owners to showcase their cars through detailed profiles with photos, specs, and unique features; quick RSVP to events; and community engagement through likes and follows.</p>
-      <div class="cs-image-gallery cs-image-gallery--compact" style="margin-top:1rem;">
-        <div class="cs-image-grid">
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-garage-1.jpg" alt="Virtual garage feature design screen 1" loading="lazy"></div>
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-garage-2.jpg" alt="Virtual garage feature design screen 2" loading="lazy"></div>
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-garage-3.jpg" alt="Virtual garage feature design screen 3" loading="lazy"></div>
-          <div class="cs-img-card cs-image-gallery--compact"><img src="images/downshift-garage-4.jpg" alt="Virtual garage feature design screen 4" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/1-splash.png" alt="Splash screen with the Banker App logo, brand moment while session auth resolves" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/2-signin.png" alt="Sign in screen with email and password fields and a Sign in with Face ID option" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/3-client-list.png" alt="My Clients list with search bar, status filter chips, and client cards showing loan type, amount, and status badge" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/4-client-detail.png" alt="Client detail screen with Call, Text, and Email actions, contact info, and a document checklist with status pills" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/5-notifications.png" alt="Notifications feed showing status-change updates with an unread indicator" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/6a-send-reminder.png" alt="Send Reminder confirmation toast reading Reminder sent to Sarah Chen" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/6b-contact-actions.png" alt="Contact action confirmation toast reading Calling Sarah Chen" loading="lazy"></div>
         </div>
       </div>
     </div>
     <div class="cs-section">
-      <p class="cs-section-num">05 · Outcome & Reflection</p>
-      <h2 class="cs-section-title">What We Learned</h2>
-      <p class="cs-body-text">The product was soft launched with just the virtual garage features, focusing on the social media aspect of the app. It wasn't received well. It didn't offer enough value over the social media platforms users were already using to show off their vehicles. Given funding challenges and other factors, it was decided not to continue the project.</p>
+      <p class="cs-section-num">05 · Outcome</p>
+      <h2 class="cs-section-title">First Place for Business Innovation</h2>
+      <p class="cs-body-text">By the end of the 24-hour hackathon, the team had a fully interactive mobile prototype: real client data, live status tracking across four document states, working search and filters, and one-tap contact and reminder actions with on-screen confirmation. The concept won first place for Business Innovation, judged largely on the productivity it stood to unlock: at a time when checking or updating a loan's status meant being back at a desk in the office, giving bankers that same visibility and ability to act from wherever they were had real potential to change how much of the day went to moving loans forward instead of waiting to get back to a computer.</p>
       <div class="cs-outcome-box">
-        <p class="cs-outcome-title">Key Takeaway</p>
+        <p class="cs-outcome-title">Results</p>
         <ul class="cs-outcome-list">
-          <li><strong>Understanding market need:</strong> When developing a product that addresses a problem you're passionate about, it's essential to conduct thorough market research to identify which features should be prioritized for the initial release. The core value proposition (event management) needed to launch alongside the social features, not after.</li>
+          <li><strong>1st place</strong> for Business Innovation at Quicken Loans' HackIT.</li>
+          <li><strong>Untethered bankers from the desk</strong>, letting loan status and follow-up happen from wherever they were, at a time when that work was still confined to the office.</li>
         </ul>
+      </div>
+    </div>
+    <div class="cs-section">
+      <p class="cs-section-num">06 · Behind the Scenes</p>
+      <h2 class="cs-section-title">HackIT — The Hack Strikes Back</h2>
+      <p class="cs-body-text">HackIT is Quicken Loans' hackathon, run under Bullet Time, the company's dedicated innovation time, and every year gets its own theme — this one went full Star Wars, from the team shirts down to the event timeline. Twenty-four hours, from doors open to winners announced, running straight through the night with the rest of the crowd.</p>
+      <div class="cs-image-gallery cs-image-gallery--thirds" style="margin-top:1.5rem;">
+        <div class="cs-image-grid">
+          <div class="cs-img-card"><img src="images/bankerapp-event-schedule.jpg" alt="Printed HackIT — The Hack Strikes Back event timeline, listing the schedule from doors open at 10 AM through winners announced at 3:15 PM the next day" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/bankerapp-event-shirt.jpg" alt="Black HackIT team T-shirt with a Star Wars Empire Strikes Back–style Hack Strikes Back logo" loading="lazy"></div>
+          <div class="cs-img-card"><img src="images/bankerapp-event-check.jpg" alt="Oversized winner's check awarded to the Banker App team at HackIT" loading="lazy"></div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══════ CASE STUDY: MY APPRAISALS ═══════ -->
+<!-- ═══════ CASE STUDY: BANKER APP ═══════ -->
 </main>
 
 <!-- ═══════ LIGHTBOX ═══════ -->
