@@ -18,7 +18,8 @@
 <title>Chris Beard, UX Designer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -46,185 +47,102 @@
 
 <main id="main-content">
 
-  <section class="hero">
-    <p class="hero-eyebrow animate-in">Product Designer · Detroit, MI</p>
-    <h1 class="hero-h1 animate-in delay-1">I bring <em>user needs and business goals</em> together.</h1>
-    <p class="hero-sub animate-in delay-2">A decade designing user-centered, inclusive, and accessible experiences for B2B and consumer-facing products, spanning mortgage closing platforms to mobile workforce apps.</p>
-    <div class="hero-actions animate-in delay-3">
-      <button class="btn-primary" type="button" onclick="location.href='work.html'">View My Work</button>
+  <section class="hero hero-home">
+    <p class="hero-eyebrow">Product Designer · Detroit, MI</p>
+    <h1 class="hero-h1"><span class="hero-line"><span>I bring user needs and</span></span><span class="hero-line"><span>business goals <em>together</em>.</span></span></h1>
+    <p class="hero-sub">A decade designing user-centered, inclusive, and accessible experiences for B2B and consumer products — mortgage closing platforms to mobile workforce apps.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" type="button" onclick="location.href='work.html'">View selected work</button>
       <a class="btn-ghost" href="https://cdn.prod.website-files.com/657235eab95ad436f5d0ef59/69a52b93fa507fe3a2e2536a_Chris_Beard_Public_Resume.pdf" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 14h12M8 2v8M4 7l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Download Résumé
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 14h12M8 2v8M4 7l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download résumé
       </a>
-      <div class="hero-social-links">
-        <a class="social-link" href="https://www.linkedin.com/in/beard02/" target="_blank" rel="noopener" title="LinkedIn">in</a>
-      </div>
     </div>
   </section>
 
-  <!-- METRICS STRIP -->
-  <div class="metrics-strip">
-    <div class="metrics-inner">
-      <div class="metric-item">
-        <span class="metric-num">+40%</span>
-        <span class="metric-label">Navigation Discoverability</span>
-        <span class="metric-co">UWM · 2025</span>
-      </div>
-      <div class="metric-item">
-        <span class="metric-num">80%</span>
-        <span class="metric-label">Task completion rate<br>(from 15%)</span>
-        <span class="metric-co">UWM · 2025</span>
-      </div>
-      <div class="metric-item">
-        <span class="metric-num">15→3%</span>
-        <span class="metric-label">eClosing failure rate</span>
-        <span class="metric-co">Nexsys · 2019–22</span>
-      </div>
-      <div class="metric-item">
-        <span class="metric-num">High-80s</span>
-        <span class="metric-label">NPS maintained</span>
-        <span class="metric-co">Nexsys · Clear Sign</span>
-      </div>
+  <!-- SELECTED WORK -->
+  <section class="home-section home-section--ruled">
+    <div class="section-head" data-reveal="0">
+      <h2 class="section-kicker">Selected work</h2>
+      <a class="section-head-link" href="work.html">All six case studies →</a>
     </div>
-  </div>
+    <p class="section-note" data-reveal="60">Six engagements; three shown.</p>
 
-  <!-- BENTO GRID -->
-  <section class="bento-section">
-    <article class="card how-card">
-      <div class="how-card-inner">
-        <div>
-          <h2 class="how-h2">How I Work</h2>
-          <p class="how-sub">Core principles from discovery through handoff, across every engagement.</p>
-        </div>
-        <div class="how-pillars">
-          <div class="pillar">
-            <p class="pillar-name">Research-Grounded</p>
-            <p class="pillar-desc">Contextual inquiry, heuristic evaluation, and analytics anchor every design decision, not assumptions.</p>
-          </div>
-          <div class="pillar">
-            <p class="pillar-name">Systems-Oriented</p>
-            <p class="pillar-desc">Co-authored design systems in Figma and Adobe XD. Scalable, reusable component libraries from day one.</p>
-          </div>
-          <div class="pillar">
-            <p class="pillar-name">Cross-Functional</p>
-            <p class="pillar-desc">Managed UX across 5 concurrent agile teams. HTML/CSS/JS background, comfortable pairing directly with devs.</p>
-          </div>
-          <div class="pillar">
-            <p class="pillar-name">Accessibility-First</p>
-            <p class="pillar-desc">WCAG 2.1 AA/AAA advocate. Led org-wide accessibility audits, roadmapping, and inclusive design evangelism.</p>
-          </div>
-          <div class="pillar">
-            <p class="pillar-name">Lean & Iterative</p>
-            <p class="pillar-desc">Prototype, test, iterate. Severity frameworks prioritize by task criticality × business impact.</p>
-          </div>
+    <a class="feature-card" href="cs-clearsign.html">
+      <div class="feature-media">
+        <img src="images/clearsign-redesign.png" alt="Several screenshots of the UI for the Clear Sign redesign" loading="lazy">
+      </div>
+      <div class="feature-body">
+        <p class="feature-index">01 · Amrock · 2022</p>
+        <h3 class="feature-title">Reimagining a mortgage closing platform from a mobile-first perspective</h3>
+        <p class="feature-desc">Heuristic evaluation and journey mapping on a live MVP, then a parallel mobile-first exploration that cut redundant steps from the closing workflow.</p>
+        <div class="feature-metrics">
+          <div><span class="feature-metric-num"><span data-count="4">4</span></span><span class="feature-metric-label">agile teams aligned</span></div>
+          <div><span class="feature-metric-num">AA</span><span class="feature-metric-label">WCAG 2.1 defined</span></div>
+          <div><span class="feature-metric-num">KPI</span><span class="feature-metric-label">framework authored</span></div>
         </div>
       </div>
-    </article>
+    </a>
 
-    <h2 class="section-label">Selected Work</h2>
-    <div class="bento-grid">
-
-      <!-- UWM — Large -->
-      <article class="card case-card-med" onclick="location.href='cs-uwm.html'" tabindex="0" role="button" aria-label="Read UWM case study" >
-        <div class="case-card-inner">
-          <div class="card-tag-row">
-            <span class="tag tag-industry">Fintech</span>
-            <span class="tag tag-platform">B2B Web App</span>
-            <span class="tag tag-year">UWM · 2025</span>
-          </div>
-          <div class="card-thumb card-thumb-large" style="background:#e9f3fc; display:flex; align-items:center; justify-content:center;">
-            <svg width="80" height="60" viewBox="0 0 80 60" fill="none" opacity="0.25"><rect x="4" y="4" width="72" height="10" rx="2" fill="#0F1C2E"/><rect x="4" y="20" width="48" height="6" rx="2" fill="#0F1C2E"/><rect x="4" y="32" width="72" height="20" rx="2" fill="#1B4F8A"/><rect x="8" y="36" width="24" height="3" rx="1" fill="#F4F7FB" opacity="0.7"/><rect x="8" y="43" width="16" height="3" rx="1" fill="#F4F7FB" opacity="0.4"/><rect x="56" y="36" width="16" height="10" rx="1" fill="#F4F7FB" opacity="0.5"/></svg>
-          </div>
-          <h2 class="card-thesis">Projecting a 40% Lift in Discoverability Through Navigation Restructure and Product Naming Clarity</h2>
-          <p class="card-summary">Leading the end-to-end redesign of navigation and product naming for UWM's broker-facing tools to simplify and streamline discoverability within our platform.</p>
-          <div class="card-cta">Read case study <span class="card-cta-arrow">→</span></div>
+    <a class="feature-card" href="cs-nexsys.html">
+      <div class="feature-body">
+        <p class="feature-index">02 · Nexsys · 2018–22</p>
+        <h3 class="feature-title">eClosing platform: from in-person MVP to industry-first remote notarization</h3>
+        <p class="feature-desc">A clean-room MVP build, then live-product usability work, then a pivot to remote video notarization under Covid-driven legislation — ahead of the industry.</p>
+        <div class="feature-metrics">
+          <div><span class="feature-metric-num feature-metric-num--positive">15→<span data-count="3">3</span>%</span><span class="feature-metric-label">closing failures</span></div>
+          <div><span class="feature-metric-num">80s</span><span class="feature-metric-label">NPS, high, sustained</span></div>
+          <div><span class="feature-metric-num"><span data-count="5">5</span></span><span class="feature-metric-label">teams, three products</span></div>
         </div>
-      </article>
+      </div>
+      <div class="feature-media">
+        <img src="images/nexsys-ron.jpg" alt="A laptop showing a video conference of several people with a document on screen being signed" loading="lazy">
+      </div>
+    </a>
 
-      <!-- Nexsys eClosing Platform -->
-      <article class="card case-card-med" onclick="location.href='cs-nexsys.html'" tabindex="0" role="button" aria-label="Read eClosing Platform case study" >
-        <div class="case-card-inner">
-          <div class="card-tag-row">
-            <span class="tag tag-industry">Mortgage Tech</span>
-            <span class="tag tag-platform">B2B · Web + Video</span>
-            <span class="tag tag-year">Nexsys · 2018–20</span>
-          </div>
-          <div class="card-thumb">
-            <img src="images/nexsys-ron.jpg" alt="A laptop showing a video conference of several people with a document on screen being signed" loading="lazy">
-          </div>
-          <h2 class="card-thesis">eClosing Platform: From In-Person MVP to Industry-First Remote Notarization</h2>
-          <p class="card-summary">Three-phase journey: a clean-room MVP build, live-product usability improvements, then pivoting to remote video notarization under Covid-driven legislation, ahead of the industry.</p>
-          <div class="card-cta">Read case study <span class="card-cta-arrow">→</span></div>
+    <a class="feature-card" href="cs-uwm.html">
+      <div class="feature-media feature-placeholder">Placeholder<br>no public imagery<br>for this engagement yet</div>
+      <div class="feature-body">
+        <p class="feature-index">03 · UWM · 2025</p>
+        <h3 class="feature-title">Projecting a 40% lift in discoverability through navigation restructure and naming clarity</h3>
+        <p class="feature-desc">End-to-end redesign of navigation and product naming for broker-facing tools, plus an AI-driven task center.</p>
+        <div class="feature-metrics">
+          <div><span class="feature-metric-num feature-metric-num--positive">+<span data-count="40">40</span>%</span><span class="feature-metric-label">discoverability (projected)</span></div>
+          <div><span class="feature-metric-num">Card Sorting</span><span class="feature-metric-label">Research method</span></div>
         </div>
-      </article>
+      </div>
+    </a>
+  </section>
 
-      <!-- Clear Sign Redesign — Small -->
-      <article class="card case-card-med" onclick="location.href='cs-clearsign.html'" tabindex="0" role="button" aria-label="Read Clear Sign Redesign case study" >
-        <div class="case-card-inner">
-          <div class="card-tag-row">
-            <span class="tag tag-industry">Mortgage Tech</span>
-            <span class="tag tag-year">Amrock · 2022</span>
-          </div>
-          <div class="card-thumb">
-            <img src="images/clearsign-redesign.png" alt="Several screenshots of the UI for the Clear Sign Redesign" loading="lazy">
-          </div>
-          <h2 class="card-thesis">Reimagining a Mortgage Closing Platform from a Mobile-First Perspective</h2>
-          <p class="card-summary">Parallel design exploration to reduce friction in the remote closing experience through research, competitive analysis, and usability testing.</p>
-          <div class="card-cta">Read case study <span class="card-cta-arrow">→</span></div>
-        </div>
-      </article>
-
-      <!-- WCAG — Medium -->
-      <article class="card case-card-med" onclick="location.href='cs-wcag.html'" tabindex="0" role="button" aria-label="Read WCAG Accessibility Audit case study" >
-        <div class="case-card-inner">
-          <div class="card-tag-row">
-            <span class="tag tag-industry">Accessibility</span>
-            <span class="tag tag-platform">Enterprise</span>
-            <span class="tag tag-year">Amrock · 2022</span>
-          </div>
-          <div class="card-thumb">
-            <img src="images/wcag.svg" alt="Custom graphic showing WCAG Web Content Accessibility Guidelines with accessibility icons" loading="lazy" style="object-fit:contain; background:#e9f3fc; padding:1.5rem;">
-          </div>
-          <h2 class="card-thesis">Championing WCAG 2.1 AA Across an Enterprise eClosing Suite</h2>
-          <p class="card-summary">Deep dive accessibility audit with a prioritized roadmap, from compliance triage to long-term inclusive design adoption across four concurrent teams.</p>
-          <div class="card-cta">Read case study <span class="card-cta-arrow">→</span></div>
-        </div>
-      </article>
-
-      <!-- Downshift — Medium -->
-      <article class="card case-card-med" onclick="location.href='cs-downshift.html'" tabindex="0" role="button" aria-label="Read Downshift case study" >
-        <div class="case-card-inner">
-          <div class="card-tag-row">
-            <span class="tag tag-industry">Social · Automotive</span>
-            <span class="tag tag-platform">Web + Mobile</span>
-            <span class="tag tag-year">2015–16</span>
-          </div>
-          <div class="card-thumb">
-            <img src="images/downshift-hero.jpg" alt="Several screenshots show the website and mobile app of the Downshift.io product" loading="lazy">
-          </div>
-          <h2 class="card-thesis">Streamlining Automotive Event Management Through a Dual-Purpose Social Platform</h2>
-          <p class="card-summary">MVP design for an automotive event and social media platform serving three distinct user groups: attendees, vehicle owners, and event coordinators.</p>
-          <div class="card-cta">Read case study <span class="card-cta-arrow">→</span></div>
-        </div>
-      </article>
-
-      <!-- My Appraisals — Medium -->
-      <article class="card case-card-med" onclick="location.href='cs-appraisals.html'" tabindex="0" role="button" aria-label="Read My Appraisals case study" >
-        <div class="case-card-inner">
-          <div class="card-tag-row">
-            <span class="tag tag-industry">Real Estate</span>
-            <span class="tag tag-platform">iOS + Android</span>
-            <span class="tag tag-year">Amrock · 2014–15</span>
-          </div>
-          <div class="card-thumb">
-            <img src="images/myappraisals-hero.png" alt="Several screenshots of the mobile version of the My Appraisals app" loading="lazy">
-          </div>
-          <h2 class="card-thesis">Cutting Appraiser Order Acceptance from Hours to Minutes via Mobile-First Design</h2>
-          <p class="card-summary">Mobile app and web portal that reduced scheduling friction for field appraisers, replacing phone and email workflows with real-time order management.</p>
-          <div class="card-cta">Read case study <span class="card-cta-arrow">→</span></div>
-        </div>
-      </article>
-
+  <!-- HOW I WORK -->
+  <section class="home-section">
+    <h2 class="section-kicker" data-reveal="0">How I work</h2>
+    <p class="section-note" data-reveal="60">Core principles from discovery through handoff, across every engagement.</p>
+    <div class="how-grid">
+      <div class="how-cell" data-reveal="0">
+        <p class="how-cell-title">Research-grounded</p>
+        <p class="how-cell-desc">Contextual inquiry, heuristic evaluation, and analytics anchor every decision — not assumptions.</p>
+      </div>
+      <div class="how-cell" data-reveal="80">
+        <p class="how-cell-title">Systems-oriented</p>
+        <p class="how-cell-desc">Co-authored design systems in Figma and Adobe XD. Reusable component libraries from day one.</p>
+      </div>
+      <div class="how-cell" data-reveal="160">
+        <p class="how-cell-title">Cross-functional</p>
+        <p class="how-cell-desc">Managed UX across five concurrent agile teams. HTML/CSS/JS background — comfortable pairing with devs.</p>
+      </div>
+      <div class="how-cell" data-reveal="0">
+        <p class="how-cell-title">Accessibility-first</p>
+        <p class="how-cell-desc">WCAG 2.1 AA/AAA advocate. Led org-wide audits, roadmapping, and inclusive design evangelism.</p>
+      </div>
+      <div class="how-cell" data-reveal="80">
+        <p class="how-cell-title">Lean and iterative</p>
+        <p class="how-cell-desc">Prototype, test, iterate. Severity frameworks prioritize by task criticality × business impact.</p>
+      </div>
+      <div class="how-cell how-cell--brand" data-reveal="160">
+        <p class="how-cell-title">Mentorship</p>
+        <p class="how-cell-desc">Directly mentored junior designers on process, critique, and growth inside an agile product org.</p>
+      </div>
     </div>
   </section>
 
@@ -251,6 +169,7 @@
   </div>
 </div>
 <script src="nav.js"></script>
+<script src="motion.js"></script>
 <script src="consent.js"></script>
 </body>
 </html>

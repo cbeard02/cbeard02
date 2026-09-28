@@ -18,7 +18,7 @@
 <title>Clear Sign Accessibility — Chris Beard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body class=cs-page-body>
@@ -90,18 +90,18 @@
       <p class="cs-body-text" style="margin-top:1.25rem; margin-bottom:1rem;">Each identified issue was scored using a <strong>Severity × User Impact matrix</strong>, intersecting how critical the failed interaction was to task completion against the breadth of users affected. This produced a three-phase roadmap: critical blockers, sprint-level systemic improvements, and long-term design system integration.</p>
       <div class="severity-matrix">
         <div class="matrix-header"><p class="matrix-header-title">Accessibility Severity Framework: Issue Criticality × User Population Affected</p></div>
-        <div style="overflow-x:auto;">
-          <table style="width:100%; border-collapse:collapse; font-size:1rem;">
+        <div class="severity-table-wrap">
+          <table class="severity-table">
             <thead><tr>
-              <th style="padding:0.6rem 1rem; text-align:left; background:var(--bg-warm); border-right:1px solid var(--border); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-weight:500; font-size:1rem; letter-spacing:0.07em; text-transform:uppercase; color:var(--ink-2); width:180px;">Criticality →</th>
-              <th style="padding:0.6rem 1rem; text-align:center; background:var(--bg-warm); border-right:1px solid var(--border); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:1rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-2);">Narrow Audience</th>
-              <th style="padding:0.6rem 1rem; text-align:center; background:var(--bg-warm); border-right:1px solid var(--border); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:1rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-2);">Broad Audience</th>
-              <th style="padding:0.6rem 1rem; text-align:center; background:var(--bg-warm); border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:1rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-2);">All Users</th>
+              <th scope="col">Criticality →</th>
+              <th scope="col">Narrow Audience</th>
+              <th scope="col">Broad Audience</th>
+              <th scope="col">All Users</th>
             </tr></thead>
             <tbody>
-              <tr><td style="padding:0.65rem 1rem; background:var(--bg-warm); border-right:1px solid var(--border); border-bottom:1px solid var(--border); font-weight:500; color:var(--ink-2); font-size:1rem;">Blocker</td><td class="cell-high" style="padding:0.65rem 1rem; text-align:center; font-weight:600; border-right:1px solid var(--border); border-bottom:1px solid var(--border);">⬆ Fix immediately</td><td class="cell-high" style="padding:0.65rem 1rem; text-align:center; font-weight:600; border-right:1px solid var(--border); border-bottom:1px solid var(--border);">⬆ Fix immediately</td><td class="cell-high" style="padding:0.65rem 1rem; text-align:center; font-weight:600; border-bottom:1px solid var(--border);">⬆ Fix immediately</td></tr>
-              <tr><td style="padding:0.65rem 1rem; background:var(--bg-warm); border-right:1px solid var(--border); border-bottom:1px solid var(--border); font-weight:500; color:var(--ink-2); font-size:1rem;">Degraded UX</td><td class="cell-low" style="padding:0.65rem 1rem; text-align:center; border-right:1px solid var(--border); border-bottom:1px solid var(--border);">Backlog</td><td class="cell-med" style="padding:0.65rem 1rem; text-align:center; border-right:1px solid var(--border); border-bottom:1px solid var(--border);">Next sprint</td><td class="cell-high" style="padding:0.65rem 1rem; text-align:center; font-weight:600; border-bottom:1px solid var(--border);">⬆ Fix immediately</td></tr>
-              <tr><td style="padding:0.65rem 1rem; background:var(--bg-warm); border-right:1px solid var(--border); font-weight:500; color:var(--ink-2); font-size:1rem;">Enhancement</td><td class="cell-low" style="padding:0.65rem 1rem; text-align:center; border-right:1px solid var(--border);">Deprioritize</td><td class="cell-low" style="padding:0.65rem 1rem; text-align:center; border-right:1px solid var(--border);">Backlog</td><td class="cell-med" style="padding:0.65rem 1rem; text-align:center;">Next sprint</td></tr>
+              <tr><th scope="row">Blocker</th><td class="cell-high" data-label="Narrow Audience">⬆ Fix immediately</td><td class="cell-high" data-label="Broad Audience">⬆ Fix immediately</td><td class="cell-high" data-label="All Users">⬆ Fix immediately</td></tr>
+              <tr><th scope="row">Degraded UX</th><td class="cell-low" data-label="Narrow Audience">Backlog</td><td class="cell-med" data-label="Broad Audience">Next sprint</td><td class="cell-high" data-label="All Users">⬆ Fix immediately</td></tr>
+              <tr><th scope="row">Enhancement</th><td class="cell-low" data-label="Narrow Audience">Deprioritize</td><td class="cell-low" data-label="Broad Audience">Backlog</td><td class="cell-med" data-label="All Users">Next sprint</td></tr>
             </tbody>
           </table>
         </div>

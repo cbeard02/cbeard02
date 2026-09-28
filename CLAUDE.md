@@ -18,7 +18,7 @@ python -m http.server 8080
 
 ## File Structure
 
-- `index.html` — home page (hero, metrics strip, bento card grid)
+- `index.html` — home page (centered hero, three alternating case-study feature cards, "How I work" hairline grid)
 - `work.html` — work listing (flat rows with metrics and CTAs)
 - `resume.html` — résumé with downloadable PDF CTA
 - `cs-*.html` — individual case study pages (6 total)
@@ -28,12 +28,25 @@ python -m http.server 8080
 
 All styles live in `styles.css`. Key patterns:
 
-**Design tokens (CSS custom properties at `:root`):**
-- Colors: `--accent` (#1B4F8A blue), grays, off-white backgrounds
-- Typography: `--font-display` (Inter), `--font-body` (Krub), `--font-mono`
+**Design tokens (CSS custom properties at `:root`), in two layers:**
+
+1. **Pajamas constants** (`--gl-*`) — raw values from the GitLab Pajamas design
+   system: the neutral and purple ramps, the green/orange/red tint steps,
+   and the two font weights. Treat these as read-only; they mirror the design
+   system's own values.
+2. **Site semantics** — everything else, defined only in terms of the layer
+   above. Never introduce a raw color here; add the constant first.
+
+- Colors: `--accent` (purple.600 `#694cc0` — Pajamas' brand hue), `--ink`/`--ink-2`/`--ink-3`
+  (neutral.800/600/500), `--border`/`--border-strong` (neutral.100/200)
+- Status tints: `--status-{danger,warning,success}-{bg,text}` (50 / 600 steps)
+- Typography: `--font-display` / `--font-body` (GitLab Sans → Inter),
+  `--font-mono` (GitLab Mono → JetBrains Mono)
+- Weights: **only** `--gl-weight-normal` (400) and `--gl-weight-bold` (600).
+  Pajamas ships two weights; do not add 300/500/700.
 - Spacing: `clamp()`-based fluid values
 - Transitions: `--transition` (0.22s cubic-bezier)
-- Radii: `--radius` (4px), `--radius-lg` (8px)
+- Radii: `--radius` (4px, `border-radius-md`), `--radius-lg` (8px, `border-radius-lg`)
 
 **Layout components:**
 - `.bento-grid` / `.bento-section` — 12-column card grid on the home page
