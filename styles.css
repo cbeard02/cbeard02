@@ -18,13 +18,20 @@
     --gl-purple-50:  #f4f0ff;
     --gl-purple-100: #e1d8f9;
     --gl-purple-300: #ac93e6;
+    --gl-purple-500: #7b58cf;
     --gl-purple-600: #694cc0;
     --gl-purple-700: #5c47a6;
+    --gl-purple-900: #342d59;
 
     --gl-green-50:  #ecf4ee;   --gl-green-100: #c3e6cd;
+    --gl-green-500: #108548;
     --gl-green-600: #2f7549;   --gl-green-700: #306440;
-    --gl-orange-50: #fdf1dd;   --gl-orange-600: #995715;
-    --gl-red-50:    #fcf1ef;   --gl-red-600:    #c02f12;
+    --gl-green-900: #1e3e28;
+    --gl-blue-50:   #e9f3fc;   --gl-blue-500:   #1f75cb;   --gl-blue-900:   #213454;
+    --gl-orange-50: #fdf1dd;   --gl-orange-500: #ab6100;   --gl-orange-600: #995715;
+    --gl-orange-900: #532e16;
+    --gl-red-50:    #fcf1ef;   --gl-red-500:    #dd2b0e;   --gl-red-600:    #c02f12;
+    --gl-red-900:   #582014;
 
     /* Pajamas ships two weights only: 400 body, 600 headings and labels. */
     --gl-shadow-color: rgba(5,5,6,0.16);
@@ -319,13 +326,116 @@
   .nda-sub { font-size: 0.9375rem; color: var(--ink-2); }
 
   /* ── HOW I WORK ── */
-  /* ── HOME: centered hero ── */
-  .hero-home { max-width: 1060px; padding: 6.5rem 3rem 5.5rem; }
-  .hero-home .hero-eyebrow::before { display: none; }
-  .hero-home .hero-h1 { font-size: clamp(2.25rem, 5.5vw, 3.75rem); line-height: 1.08; letter-spacing: -0.03em; }
-  .hero-home .hero-h1 em { font-style: normal; color: var(--accent); }
-  .hero-home .hero-sub { max-width: 660px; margin: 1.75rem 0 0; font-size: 1.125rem; line-height: 1.6; }
-  .hero-home .hero-actions { margin: 2.25rem 0 0; }
+  /* ── HOME: scroll-driven hero stage (Home 2l design) ──
+     By default this is a plain stacked layout: hero, statement, six skill
+     cards, stats. That's what no-JS, reduced-motion and landscape-phone
+     visitors get. Otherwise hero-stage.js sets [data-live] on .hs, which pins the
+     stage and plays the sequence on scroll: the hero fades back, the chips
+     hanging off the image fly out and grow into cards, then the statement
+     and stats come in. */
+  .hs { max-width: 1200px; margin: 0 auto; padding: 4rem 3rem 4.5rem; }
+  .hs-sticky { display: flex; flex-direction: column; gap: 3.5rem; }
+
+  .hs-hero { display: flex; flex-direction: column; align-items: center; gap: clamp(20px, 4vh, 44px); }
+  .hs-text { display: flex; flex-direction: column; align-items: center; gap: clamp(12px, 2.2vh, 22px); text-align: center; max-width: 1000px; }
+  .hs-h1 { font-family: var(--font-display); font-size: clamp(2rem, min(5vw, 6.4vh), 4.125rem); line-height: 1.08; letter-spacing: -0.035em; font-weight: var(--gl-weight-bold); color: var(--heading); text-wrap: balance; }
+  .hs-sub { max-width: 720px; font-size: clamp(0.9375rem, 2.2vh, 1.125rem); line-height: 1.55; color: var(--ink); text-wrap: pretty; }
+  .hs-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+  .js .hs-h1      { animation: fadeUp 600ms linear both; }
+  .js .hs-sub     { animation: fadeUp 600ms linear 100ms both; }
+  .js .hs-actions { animation: fadeUp 600ms linear 200ms both; }
+
+  .hs-frame { position: relative; width: 100%; max-width: 925px; aspect-ratio: 925 / 478; }
+  .hs-img { position: absolute; inset: 0; border-radius: 24px; overflow: hidden; background: var(--bg-subtle); }
+  .hs-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* Chip tones — each card carries one; the chip, card and dot read from it. */
+  .hs-tone-purple { --hs-bg: var(--gl-purple-50); --hs-fg: var(--gl-purple-900); --hs-dot: var(--gl-purple-500); }
+  .hs-tone-green  { --hs-bg: var(--gl-green-50);  --hs-fg: var(--gl-green-900);  --hs-dot: var(--gl-green-500); }
+  .hs-tone-blue   { --hs-bg: var(--gl-blue-50);   --hs-fg: var(--gl-blue-900);   --hs-dot: var(--gl-blue-500); }
+  .hs-tone-red    { --hs-bg: var(--gl-red-50);    --hs-fg: var(--gl-red-900);    --hs-dot: var(--gl-red-500); }
+  .hs-tone-orange { --hs-bg: var(--gl-orange-50); --hs-fg: var(--gl-orange-900); --hs-dot: var(--gl-orange-500); }
+
+  .hs-dot { display: block; flex: none; width: 20px; height: 20px; border-radius: 6px; background: var(--hs-dot); }
+  /* Chip label: text then dot for left-hand chips, dot then text for right. */
+  .hs-chip { display: flex; align-items: center; gap: 10px; padding: 9px 10px 9px 14px; font-size: 1rem; line-height: 1; color: var(--hs-fg); white-space: nowrap; }
+  .hs-chip--r { padding: 9px 14px 9px 10px; }
+
+  /* The chips hanging off the image's edges. In the static layout they're
+     shown as-is; in live mode they turn into invisible ghosts that the
+     script measures to find where each card starts its flight. Wide chips
+     may run past the screen edge on small screens, so the stage clips. */
+  .hs:not([data-live]) { overflow-x: clip; }
+  .hs-ghost { position: absolute; border: 1px solid transparent; border-radius: 10px; background: var(--hs-bg); }
+  .hs[data-live] .hs-ghost { visibility: hidden; }
+
+  .hs-cards { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 1rem; }
+  .hs-card, .hs-card-in, .hs-bob { display: flex; }
+  .hs-card-in, .hs-bob { flex: 1; }
+  .hs-bob { gap: 10px; }
+  .hs-thumb { flex: none; width: 88px; min-height: 88px; border-radius: 12px; overflow: hidden; background: var(--bg-subtle); border: 1px solid var(--gl-neutral-50); }
+  .hs-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hs-thumb--contain img { object-fit: contain; padding: 14%; }
+  .hs-thumb-text { display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.6875rem; line-height: 1; font-weight: var(--gl-weight-bold); color: var(--ink-3); }
+  .hs-box { position: relative; flex: 1; border-radius: 10px; background: var(--hs-bg); border: 1px solid transparent; overflow: hidden; }
+  .hs-start { display: none; }
+  .hs-end { display: flex; align-items: flex-start; gap: 12px; padding: 18px 22px; font-size: 0.9375rem; line-height: 1.45; color: var(--hs-fg); text-wrap: pretty; }
+  .hs-end .hs-dot { width: 16px; height: 16px; border-radius: 5px; margin-top: 2px; }
+  .hs-end-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .hs-statement { display: flex; justify-content: center; text-align: center; }
+  .hs-statement h2 { max-width: 900px; font-family: var(--font-display); font-size: clamp(1.625rem, min(3.6vw, 5vh), 2.875rem); line-height: 1.18; letter-spacing: -0.025em; font-weight: var(--gl-weight-bold); color: var(--heading); text-wrap: balance; }
+
+  .hs-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: center; padding-top: 2.5rem; border-top: 1px solid var(--gl-neutral-50); background: var(--bg); }
+  .hs-stat { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; padding: 0 16px; }
+  .hs-stat-num { font-family: var(--font-display); font-size: clamp(2.25rem, min(4.4vw, 7vh), 4rem); line-height: 1; letter-spacing: -0.04em; font-weight: var(--gl-weight-bold); color: var(--heading); }
+  .hs-stat-label { font-size: clamp(0.8125rem, 1.9vh, 1rem); line-height: 1.35; color: var(--ink); }
+
+  /* ── Live (scroll-driven) mode ── */
+  @keyframes hsChipInL { from { opacity: 0; translate: -56px 0; } to { opacity: 1; translate: 0 0; } }
+  @keyframes hsChipInR { from { opacity: 0; translate: 56px 0; }  to { opacity: 1; translate: 0 0; } }
+  @keyframes hsBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  .hs[data-live] { position: relative; max-width: none; height: 340vh; padding: 0; }
+  .hs[data-live] .hs-sticky { display: block; position: sticky; top: var(--navh, 60px); height: calc(100vh - var(--navh, 60px)); overflow: hidden; }
+  .hs[data-live] .hs-hero { position: absolute; inset: 0; padding: clamp(20px, 5vh, 56px) 48px 0; }
+  .hs[data-live] .hs-text, .hs[data-live] .hs-img { will-change: opacity, transform; }
+  .hs[data-live] .hs-frame { flex: none; width: auto; max-width: none; height: min(46vh, 38vw); }
+
+  .hs-ghost[data-i="0"] { right: calc(100% - 72px);  top: 15%; }
+  .hs-ghost[data-i="1"] { left: calc(100% - 72px);   top: 15%; }
+  .hs-ghost[data-i="2"] { right: calc(100% - 112px); top: 50%; }
+  .hs-ghost[data-i="3"] { left: calc(100% - 112px);  top: 50%; }
+  .hs-ghost[data-i="4"] { right: calc(100% - 56px);  top: 73%; }
+  .hs-ghost[data-i="5"] { left: calc(100% - 56px);   top: 73%; }
+
+  .hs[data-live] .hs-statement { position: absolute; left: 0; right: 0; top: 0; bottom: clamp(110px, 20vh, 180px); align-items: center; padding: 0 48px; pointer-events: none; opacity: 0; }
+  .hs[data-live] .hs-stats { position: absolute; left: 0; right: 0; bottom: 0; height: clamp(110px, 20vh, 180px); padding: 0; opacity: 0; transform: translateY(24px); }
+
+  .hs[data-live] .hs-cards { display: block; position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+  .hs[data-live] .hs-card { position: absolute; left: 0; top: 0; opacity: 0; will-change: transform; }
+  .hs[data-live] .hs-card-in { animation: hsChipInL 800ms cubic-bezier(0.2,0.7,0.3,1) both; }
+  .hs[data-live] .hs-card:nth-child(even) .hs-card-in { animation-name: hsChipInR; }
+  .hs[data-live] .hs-bob { gap: 0; animation: hsBob 5s ease-in-out infinite; }
+  .hs[data-live] .hs-card:nth-child(1) .hs-card-in { animation-delay: 500ms; }
+  .hs[data-live] .hs-card:nth-child(2) .hs-card-in { animation-delay: 680ms; }
+  .hs[data-live] .hs-card:nth-child(3) .hs-card-in { animation-delay: 860ms; }
+  .hs[data-live] .hs-card:nth-child(4) .hs-card-in { animation-delay: 1040ms; }
+  .hs[data-live] .hs-card:nth-child(5) .hs-card-in { animation-delay: 1220ms; }
+  .hs[data-live] .hs-card:nth-child(6) .hs-card-in { animation-delay: 1400ms; }
+  .hs[data-live] .hs-card:nth-child(2) .hs-bob { animation-duration: 5.6s; animation-delay: -0.9s; }
+  .hs[data-live] .hs-card:nth-child(3) .hs-bob { animation-duration: 6.2s; animation-delay: -1.8s; }
+  .hs[data-live] .hs-card:nth-child(4) .hs-bob { animation-duration: 6.8s; animation-delay: -2.7s; }
+  .hs[data-live] .hs-card:nth-child(5) .hs-bob { animation-duration: 7.4s; animation-delay: -3.6s; }
+  .hs[data-live] .hs-card:nth-child(6) .hs-bob { animation-duration: 8s;   animation-delay: -4.5s; }
+  .hs[data-live] .hs-thumb { width: 0; height: 100%; min-height: 0; opacity: 0; }
+  .hs[data-live] .hs-box { flex: none; }
+  .hs[data-live] .hs-start { display: flex; position: absolute; left: 0; top: 0; }
+  .hs[data-live] .hs-end { position: absolute; left: 0; top: 0; opacity: 0; }
+  /* Narrower cards in the two-column tablet arrangement (see hero-stage.js). */
+  @media (max-width: 1099px) {
+    .hs[data-live] .hs-end { gap: 10px; padding: 14px 16px; font-size: 0.875rem; }
+  }
 
   /* ── HOME: shared section chrome ── */
   .home-section { max-width: 1060px; margin: 0 auto; padding: 4.5rem 3rem 2rem; }
@@ -768,19 +878,7 @@
   .delay-2 { animation-delay: 0.16s; }
   .delay-3 { animation-delay: 0.24s; }
 
-  /* ── MOTION (carried over from the Home 2a design) ────────────────────
-     Line-wipe for the hero headline: each line clips its own inner span,
-     which slides up from below the clip. */
-  @keyframes lineWipe { from { opacity: 0; transform: translateY(110%); } to { opacity: 1; transform: none; } }
-  .hero-line { display: block; overflow: hidden; padding-bottom: 0.16em; margin-bottom: -0.16em; }
-  .hero-line > span { display: inline-block; animation: lineWipe 700ms cubic-bezier(0.2,0.7,0.25,1) both; }
-  .hero-line:nth-of-type(1) > span { animation-delay: 120ms; }
-  .hero-line:nth-of-type(2) > span { animation-delay: 240ms; }
-
-  .hero-home .hero-eyebrow { animation: fadeUp 500ms linear both; }
-  .hero-home .hero-sub     { animation: fadeUp 600ms linear 420ms both; }
-  .hero-home .hero-actions { animation: fadeUp 600ms linear 560ms both; }
-
+  /* ── MOTION (carried over from the Home 2a design) ──────────────────── */
   /* 'backwards' rather than 'both': the filled end state of 'both' would
      pin transform and defeat the hover lift below. */
   .feature-card { animation: fadeUp 480ms linear backwards; }
@@ -805,6 +903,8 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     nav { padding: 0 1.25rem; }
+    .hs[data-live] .hs-hero { padding-left: 32px; padding-right: 32px; }
+    .hs[data-live] .hs-statement { padding: 0 32px; }
     .nav-links { gap: 1.25rem; }
     .hero { padding: 3rem 1.25rem 2rem; }
     .metrics-strip { padding: 1.5rem 1.25rem; }
@@ -877,7 +977,45 @@
     .work-mini-media { border-right: 0; border-bottom: 1px solid var(--border); padding: 1.25rem 1rem; }
     .work-mini-media img { width: auto; max-width: 100%; height: 260px; max-height: none; }
     .hero-h1 { font-size: 2.25rem; }
-    .hero-home { padding: 3rem 1.25rem 2.5rem; }
+    /* Phone hero, after parentsquare.com: same composition scaled down —
+       left-aligned copy, buttons sharing a row, a narrower image with
+       smaller chips tucked closer to its edges. */
+    .hs { padding: 2.5rem 1.25rem 2.5rem; }
+    .hs-sticky { gap: 2.5rem; }
+    .hs-hero { gap: 2.25rem; }
+    .hs-text { align-items: flex-start; text-align: left; gap: 1rem; }
+    .hs-h1 { font-size: 2rem; line-height: 1.12; }
+    .hs-sub { font-size: 1rem; }
+    .hs-actions { width: 100%; flex-wrap: nowrap; gap: 0.75rem; margin-top: 0.25rem; }
+    .hs-actions > * { flex: 1; justify-content: center; text-align: center; padding: 0.75rem 1rem; }
+    .hs-frame { width: 70%; aspect-ratio: 4 / 3; }
+    .hs-img { border-radius: 16px; }
+    .hs-chip { gap: 6px; padding: 6px 7px 6px 10px; font-size: 0.75rem; }
+    .hs-chip--r { padding: 6px 10px 6px 7px; }
+    .hs-ghost { border-radius: 8px; }
+    .hs-chip .hs-dot { width: 12px; height: 12px; border-radius: 4px; }
+    .hs-ghost[data-i="0"] { right: calc(100% - 36px); }
+    .hs-ghost[data-i="1"] { left: calc(100% - 36px); }
+    .hs-ghost[data-i="2"] { right: calc(100% - 56px); }
+    .hs-ghost[data-i="3"] { left: calc(100% - 56px); }
+    .hs-ghost[data-i="4"] { right: calc(100% - 28px); }
+    .hs-ghost[data-i="5"] { left: calc(100% - 28px); }
+    .hs-statement { justify-content: flex-start; text-align: left; }
+    .hs-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2rem; padding-top: 2rem; }
+
+    /* Phone live mode: the same pinned sequence, compacted. Cards are short
+       two-line chips scattered above and below the statement, allowed to
+       run off either edge; stats sit in a 2×2 grid along the bottom. */
+    .hs[data-live] .hs-sticky { height: calc(100svh - var(--navh, 60px)); }
+    .hs[data-live] .hs-hero { padding: clamp(1.5rem, 6vh, 3.5rem) 1.25rem 0; }
+    .hs[data-live] .hs-frame { width: 68%; height: auto; }
+    .hs[data-live] .hs-statement { justify-content: center; text-align: center; padding: 0 1.25rem; }
+    .hs[data-live] .hs-stats { height: auto; padding: 1.25rem 0; row-gap: 1.25rem; }
+    .hs[data-live] .hs-stat-num { font-size: 1.75rem; }
+    .hs[data-live] .hs-stat-label { font-size: 0.8125rem; }
+    .hs[data-live] .hs-thumb { border-radius: 8px; }
+    .hs[data-live] .hs-end { gap: 8px; padding: 10px 12px; font-size: 0.75rem; line-height: 1.4; }
+    .hs[data-live] .hs-end .hs-dot { width: 12px; height: 12px; border-radius: 4px; margin-top: 1px; }
     .home-section { padding: 2.5rem 1.25rem 1rem; }
     .feature-body { padding: 1.5rem; }
     .feature-metrics { gap: 0.75rem; }
