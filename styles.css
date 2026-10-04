@@ -335,11 +335,13 @@
      in; hero-stage.js only supplies each card's offset from the centre. */
   .hs { position: relative; display: flex; flex-direction: column; min-height: max(560px, calc(100vh - var(--navh, 60px))); min-height: max(560px, calc(100svh - var(--navh, 60px))); overflow: hidden;
         --hs-thumb: clamp(70px, 13vh, 96px); --hs-box: clamp(200px, 20vw, 330px); --hs-jit: calc(80vh - 60px); }
-  .hs-area { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: clamp(20px, 4vh, 40px); padding: clamp(32px, 5.5vh, 64px) 8px 12px; }
+  .hs-area { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: clamp(12px, 4vh, 40px); padding: clamp(32px, 5.5vh, 64px) 8px 12px; }
 
   /* The headline comes first in the markup and is ordered between the rows. */
-  .hs-text { order: 2; align-self: center; position: relative; z-index: 4; margin: 0 40px; padding: clamp(18px, 3vh, 32px) clamp(24px, 3vw, 48px); background: var(--bg); border-radius: 24px; }
+  .hs-text { order: 2; align-self: center; position: relative; z-index: 4; margin: 0 40px; padding: clamp(10px, 2vh, 32px) clamp(24px, 3vw, 48px); background: var(--bg); border-radius: 24px; }
   .hs-h1 { max-width: 900px; text-align: center; font-family: var(--font-display); font-size: clamp(1.75rem, min(4vw, 6vh), 3.375rem); line-height: 1.15; letter-spacing: -0.03em; font-weight: var(--gl-weight-bold); color: var(--heading); text-wrap: balance; }
+  .hs-h1-intro { display: block; }
+  .hs-accent { color: var(--accent); }
 
   /* Card tones — each card carries one; the box and dot read from it. */
   .hs-tone-purple { --hs-bg: var(--gl-purple-50); --hs-fg: var(--gl-purple-900); --hs-dot: var(--gl-purple-500); }
@@ -381,7 +383,7 @@
   .hs-stat-label { font-size: clamp(0.8125rem, 1.9vh, 1rem); line-height: 1.35; color: var(--ink); }
 
   /* Short screens get a gentler scatter. */
-  @media (max-height: 820px) {
+  @media (max-height: 960px) {
     .hs { --hs-jit: calc((80vh - 60px) * 0.4); }
   }
   /* Too narrow for three across. Each band becomes a loose triangle: two
@@ -509,13 +511,14 @@
   .book-carousel-btn:disabled:hover { background: var(--bg-card); border-color: var(--border-strong); color: var(--ink); transform: none; box-shadow: none; }
 
   /* ── QUOTE STRIP ── */
-  .quote-strip { background: var(--bg-dark); padding: 3.5rem 2.5rem; text-align: center; }
+  /* Subtle surface; the footer supplies the rule along the bottom. */
+  .quote-strip { background: var(--bg-subtle); border-top: 1px solid var(--border); padding: 3.5rem 2.5rem; text-align: center; }
   .quote-text {
     font-family: var(--font-display); font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    font-weight: var(--gl-weight-normal); font-style: italic; color: rgba(255,255,255,0.9);
-    max-width: 700px; margin: 0 auto 1rem; line-height: 1.6; opacity: 0.9;
+    font-weight: var(--gl-weight-normal); font-style: italic; color: var(--heading);
+    max-width: 700px; margin: 0 auto 1rem; line-height: 1.6;
   }
-  .quote-attr { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  .quote-attr { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-2); }
 
   /* ── FOOTER ── */
   footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; }

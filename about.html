@@ -15,7 +15,7 @@
   gtag('js', new Date());
   gtag('config', 'G-MFQD566YZS');
 </script>
-<title>About — Chris Beard</title>
+<title>About | Chris Beard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -338,11 +338,11 @@
     }
   }, { passive: false });
 
-  // Click-and-drag (mouse only — touch already scrolls natively via touch-action)
+  // Click-and-drag (mouse only; touch already scrolls natively via touch-action)
   var isDown = false, isDragging = false, startX = 0, startScroll = 0;
 
   // Book cover images are draggable by default, which hijacks the pointer
-  // sequence with a native ghost-image drag — block it so our scroll-drag wins.
+  // sequence with a native ghost-image drag; block it so our scroll-drag wins.
   track.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
   track.addEventListener('pointerdown', function (e) {
