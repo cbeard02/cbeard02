@@ -10,6 +10,7 @@
     --gl-neutral-50:  #ececef;
     --gl-neutral-100: #dcdcde;
     --gl-neutral-200: #bfbfc3;
+    --gl-neutral-400: #89888d;
     --gl-neutral-500: #737278;
     --gl-neutral-600: #626168;
     --gl-neutral-800: #3a383f;
@@ -21,6 +22,7 @@
     --gl-purple-500: #7b58cf;
     --gl-purple-600: #694cc0;
     --gl-purple-700: #5c47a6;
+    --gl-purple-800: #493c83;
     --gl-purple-900: #342d59;
 
     --gl-green-50:  #ecf4ee;   --gl-green-100: #c3e6cd;
@@ -211,22 +213,24 @@
     line-height: 1.6; margin-bottom: 2.5rem; font-weight: var(--gl-weight-normal);
   }
   .hero-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 4rem; }
-  .btn-primary {
-    background: var(--accent); color: #ffffff; padding: 0.75rem 1.75rem;
-    border-radius: var(--radius); font-size: 1rem; font-weight: var(--gl-weight-bold);
-    text-decoration: none; letter-spacing: 0.01em;
-    transition: background var(--transition), transform var(--transition);
-    cursor: pointer; border: none; display: inline-block;
+  /* Pajamas buttons: confirm (primary) and default (secondary). Regular
+     weight, 12px side padding, a 1px inset border, and the system's state
+     steps — hover one step darker, active two — on a 100ms linear
+     transition. Sized one step up from Pajamas' 32px medium, as page CTAs.
+     Purple stands in for Pajamas' confirm blue, as it does site-wide. */
+  .btn-primary, .btn-ghost {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.625rem 0.75rem; border: 0; border-radius: var(--radius-lg);
+    font-family: inherit; font-size: 1rem; line-height: 1.25rem; font-weight: var(--gl-weight-normal);
+    text-decoration: none; cursor: pointer;
+    transition: color 100ms linear, background-color 100ms linear, box-shadow 100ms linear;
   }
-  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
-  .btn-ghost {
-    color: var(--ink-2); font-size: 1rem; text-decoration: none;
-    display: flex; align-items: center; gap: 0.5rem;
-    transition: color var(--transition), background var(--transition);
-    cursor: pointer; border: 1px solid var(--border); background: transparent;
-    padding: 0.4rem 0.75rem; border-radius: var(--radius);
-  }
-  .btn-ghost:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-2-light); border-radius: var(--radius); }
+  .btn-primary { background: var(--gl-purple-600); color: var(--gl-neutral-0); box-shadow: inset 0 0 0 1px var(--gl-purple-700); }
+  .btn-primary:hover  { background: var(--gl-purple-700); box-shadow: inset 0 0 0 1px var(--gl-purple-900); }
+  .btn-primary:active { background: var(--gl-purple-800); box-shadow: inset 0 0 0 1px var(--gl-purple-900); }
+  .btn-ghost { background: var(--gl-neutral-0); color: var(--gl-neutral-800); box-shadow: inset 0 0 0 1px var(--gl-neutral-200); }
+  .btn-ghost:hover  { background: var(--gl-neutral-50);  box-shadow: inset 0 0 0 1px var(--gl-neutral-400); }
+  .btn-ghost:active { background: var(--gl-neutral-100); box-shadow: inset 0 0 0 1px var(--gl-neutral-600); }
   .hero-with-portrait { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
   .hero-with-portrait .hero-actions { margin-bottom: 0; }
   .hero-portrait { width: 100%; aspect-ratio: 3 / 4; border-radius: var(--radius-lg); overflow: hidden; }
@@ -335,13 +339,14 @@
      in; hero-stage.js only supplies each card's offset from the centre. */
   .hs { position: relative; display: flex; flex-direction: column; min-height: max(560px, calc(100vh - var(--navh, 60px))); min-height: max(560px, calc(100svh - var(--navh, 60px))); overflow: hidden;
         --hs-thumb: clamp(70px, 13vh, 96px); --hs-box: clamp(200px, 20vw, 330px); --hs-jit: calc(80vh - 60px); }
-  .hs-area { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: clamp(12px, 4vh, 40px); padding: clamp(32px, 5.5vh, 64px) 8px 12px; }
+  .hs-area { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: clamp(12px, 2.5vh, 40px); padding: clamp(16px, 3vh, 64px) 8px 12px; }
 
   /* The headline comes first in the markup and is ordered between the rows. */
-  .hs-text { order: 2; align-self: center; position: relative; z-index: 4; margin: 0 40px; padding: clamp(10px, 2vh, 32px) clamp(24px, 3vw, 48px); background: var(--bg); border-radius: 24px; }
+  .hs-text { order: 2; align-self: center; position: relative; z-index: 4; display: flex; flex-direction: column; align-items: center; gap: clamp(12px, 2.4vh, 24px); margin: 0 40px; padding: clamp(4px, 1.2vh, 32px) clamp(24px, 3vw, 48px); background: var(--bg); border-radius: 24px; }
   .hs-h1 { max-width: 900px; text-align: center; font-family: var(--font-display); font-size: clamp(1.75rem, min(4vw, 6vh), 3.375rem); line-height: 1.15; letter-spacing: -0.03em; font-weight: var(--gl-weight-bold); color: var(--heading); text-wrap: balance; }
   .hs-h1-intro { display: block; }
   .hs-accent { color: var(--accent); }
+  .hs-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
 
   /* Card tones — each card carries one; the box and dot read from it. */
   .hs-tone-purple { --hs-bg: var(--gl-purple-50); --hs-fg: var(--gl-purple-900); --hs-dot: var(--gl-purple-500); }
@@ -367,8 +372,10 @@
   .hs-row--bottom .hs-card:nth-child(2) { --i: 4; --xo: 0.35; --yj: 0; }
   .hs-row--bottom .hs-card:nth-child(3) { --i: 5; --xo: 0.1;  --yj: 0.11; }
   .hs-bob { display: flex; }
-  .hs-card-in { display: flex; flex: 1; gap: 10px; min-width: 0; transition: transform 160ms linear; }
-  .hs-card:hover .hs-card-in { transform: translateY(-3px); }
+  /* Hover lifts the card, rings it in its own tone and drops the same soft
+     shadow the site's other cards use. */
+  .hs-card-in { display: flex; flex: 1; gap: 10px; min-width: 0; border-radius: 12px; outline: 2px solid transparent; outline-offset: 5px; transition: transform 160ms linear, outline-color 160ms linear, box-shadow 160ms linear; }
+  .hs-card:hover .hs-card-in { transform: translateY(-3px); outline-color: var(--hs-dot); box-shadow: 0 8px 24px rgba(5,5,6,0.08); }
   .hs-thumb { flex: none; width: var(--hs-thumb); height: var(--hs-thumb); border-radius: 12px; overflow: hidden; background: var(--bg-subtle); border: 1px solid var(--gl-neutral-50); }
   .hs-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .hs-thumb--contain img { object-fit: contain; padding: 14%; }
@@ -384,7 +391,7 @@
 
   /* Short screens get a gentler scatter. */
   @media (max-height: 960px) {
-    .hs { --hs-jit: calc((80vh - 60px) * 0.4); }
+    .hs { --hs-jit: calc((80vh - 60px) * 0.25); }
   }
   /* Too narrow for three across. Each band becomes a loose triangle: two
      cards pushed to opposite edges at different heights, and the third on
@@ -411,6 +418,7 @@
   @keyframes hsRise  { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
   @keyframes hsBob   { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
   .js .hs-h1 { animation: fadeUp 600ms linear both; }
+  .js .hs-actions { animation: fadeUp 600ms linear 200ms both; }
   .js .hs-card { --d: calc(700ms + var(--i) * 140ms); animation: hsBurst 1100ms cubic-bezier(0.2,0.75,0.25,1) var(--d) both, hsShow 300ms linear var(--d) both; }
   .js .hs-bob { animation: hsBob calc(5s + var(--i) * 0.6s) ease-in-out calc(var(--i) * -0.9s) infinite; }
   /* The headline's glow hides the cards while they're still behind it; it
@@ -961,7 +969,9 @@
        stats in a 2×2 grid. Taller than one screen on most phones. */
     .hs { --hs-thumb: 60px; }
     .hs-area { padding: 1.5rem 1.25rem; gap: 1.5rem; }
-    .hs-text { padding: 0.5rem 0; }
+    .hs-text { padding: 0.5rem 0; align-self: stretch; }
+    .hs-actions { width: 100%; flex-direction: column; gap: 0.625rem; }
+    .hs-actions > * { text-align: center; }
     .hs-row { grid-template-columns: minmax(0, 1fr); gap: 0.625rem; }
     .hs-row .hs-card:nth-child(n) { grid-column: auto; justify-self: stretch; width: auto; margin: 0; }
     .hs-box { gap: 10px; padding: 12px 14px; font-size: 0.875rem; }
